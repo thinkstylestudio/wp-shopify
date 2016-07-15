@@ -1,0 +1,312 @@
+.main {
+  width: 100%;
+  max-width: 77rem;
+  margin-bottom: 3em;
+
+  & > div {
+    @include respond-to(700, 'max') {
+      margin: 0;
+    }
+  }
+
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100%;
+
+  @include respond-to(900, 'max') {
+    margin: 0 auto;
+    display: block;
+    width: 30%;
+  }
+
+  @include respond-to(600, 'max') {
+    width: 50%;
+  }
+
+}
+
+.entry-content {
+
+  figure {
+    margin: 0;
+    max-width: 100%;
+
+    a {
+      border: none;
+      box-shadow: none;
+
+      &:hover {
+        background: none;
+      }
+    }
+  }
+
+  p img {
+    width: 100%;
+    margin: 1em 0;
+  }
+}
+
+.entry-summary,
+.entry-content {
+  // width: 80%;
+  // margin: 0 auto;
+
+  @include respond-to(600, 'max') {
+    width: 100%;
+  }
+
+  p img {
+    width: 100%;
+    margin: 1em 0;
+  }
+}
+
+.entry-summary-cta {
+  opacity: 0;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.post-preview {
+  padding: 0 rem($space-m * 2) rem($space-m * 2);
+
+  @include respond-to(900, 'max') {
+    padding: 0;
+  }
+
+  .entry-title {
+    margin-top: 0;
+  }
+
+  &:hover {
+    h2 {
+      color: white;
+    }
+  }
+
+  &.post {
+    border-bottom: none;
+
+    &:last-child {
+      @include respond-to(600, 'max') {
+        padding: 0;
+      }
+    }
+  }
+
+}
+
+.entry-feat-image {
+  width: 100%;
+}
+
+.entry-feat-image-link:hover {
+  opacity: 0.8;
+}
+
+.post-initial {
+  text-transform: uppercase;
+}
+
+.posts-navigation .nav-links {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+}
+
+.page-template-template-posts .posts-navigation .screen-reader-text,
+.blog .posts-navigation .screen-reader-text {
+  display: none;
+}
+
+.page-template-template-interviews,
+.single-interview {
+  .header {
+    margin-bottom: 0;
+  }
+
+  .main {
+    max-width: 100%;
+    & > .l-box {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.single-post {
+
+  .post {
+    border-bottom: none;
+  }
+
+  // .footer {
+  //   border-top: none;
+  // }
+}
+
+.sidebar {
+
+  @include respond-to(900, 'max') {
+    padding: rem($space-m*2) 0;
+    margin: rem($space-l) 0;
+    border-top: 1px solid #d8dbdf;
+  }
+
+  @include respond-to(800, 'max') {
+    flex: 0 0 auto;
+  }
+
+  @include respond-to(600, 'max') {
+    margin-top: 0;
+    margin-bottom: rem($space-s);
+  }
+
+}
+
+.post {
+  padding-bottom: rem(space-m);
+
+  @include respond-to(800, 'max') {
+    padding-right: 0;
+  }
+}
+
+.content {
+  margin-top: rem($space-l * 2);
+
+  @include respond-to(900, 'max') {
+    margin-top: rem($space-m);
+    flex-direction: column-reverse;
+  }
+}
+
+.error404 {
+  p, h1 {
+    text-align: center;
+  }
+}
+
+.nav {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+.nav-primary {
+  // @include respond-to(800, 'max') {
+  //   display: none;
+  // }
+}
+
+.nav-mobile {
+  text-align: right;
+}
+
+.nav-mobile-list {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: white;
+  margin: 0;
+  top: 47px;
+  text-align: left;
+  padding: 1em;
+  z-index: 2;
+  list-style: none;
+  box-shadow: 0 4px 11px -7px rgba(0,0,0,.65);
+
+  .menu-item {
+    float: left;
+    margin-right: 1em;
+    width: 100%;
+
+    a {
+      padding: 1em;
+    }
+  }
+}
+
+.component {
+  margin: 3em auto;
+}
+
+.post-nav {
+  text-align: center;
+  width: 100%;
+  margin: 1em 0 2em 0;
+
+  @include respond-to(600, 'max') {
+    width: 100%;
+    text-align: left;
+  }
+
+  .post-link a {
+    font-family: $font-primary;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 1em;
+    color: color(lightgreen);
+
+    &:hover {
+      color: color(darkgreen);
+    }
+  }
+
+  .post-link-meta {
+    font-family: $font-primary;
+    font-weight: bold;
+
+    @include respond-to(600, 'max') {
+      text-align: center;
+      margin-bottom: 1em;
+
+      .post-link {
+        width: 100%;
+        display: block;
+      }
+    }
+  }
+}
+
+.post-link-meta {
+  display: block;
+}
+
+.page-template-template-landing {
+  .header,
+  .footer {
+    display: none;
+  }
+
+  #content {
+    background-size: cover;
+    background-position: 50% 50%
+  }
+
+  .main {
+    margin-top: 4em;
+    max-width: 40rem;
+  }
+}
+
+.landing-title {
+  text-align: center;
+}
+
+
+.error404 .main {
+  margin-top: 3em;
+
+  .alert {
+    margin: 1em;
+  }
+}

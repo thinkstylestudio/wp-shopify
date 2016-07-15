@@ -1,0 +1,107 @@
+.footer {
+  margin: 0 0 4em 0;
+  position: relative;
+  border-top: 1px solid color(grey);
+
+  .menu-item {
+    display: block;
+    float: left;
+    margin-right: 0;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      border-right: none;
+      padding-right: 0;
+
+      a:last-child {
+        padding-right: 0;
+        border-right: 0;
+
+        @include respond-to(600, 'max') {
+          border-bottom: none;
+        }
+
+      }
+    }
+
+    a {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-family: $font-primary;
+      padding: 0 1.5em;
+      width: 100%;
+      display: block;
+      border-right: 1px solid color(grey);
+
+      @include respond-to(600, 'max') {
+        border-right: none;
+        text-align: center;
+        margin: 0.4em 0;
+        border-bottom: 1px solid color(grey);
+        padding: 0 0 1em 0;
+      }
+    }
+
+  }
+
+  @include respond-to(800, 'max') {
+    margin-bottom: 0;
+  }
+
+}
+
+.footer-widgets {
+  margin-bottom: 4em;
+
+  @include respond-to(600, 'max') {
+    margin-bottom: 1em;
+  }
+}
+
+#menu-footer-navigation {
+  display: flex;
+  justify-content: center;
+  float: left;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+
+  @include respond-to(600, 'max') {
+    flex-direction: column;
+  }
+}
+
+.footer-wrapper {
+  margin-top: 2em;
+  padding: 2em 0 0 0;
+
+  @include respond-to(700, 'max') {
+    padding: 2em 0;
+    flex-direction: column;
+    margin-top: 0;
+  }
+}
+
+.footer-copy {
+  margin-top: 0;
+  font-size: rem(14px);
+  font-family: Lato,cursive, helvetica, sans-serif;
+}
+
+.footer-logo {
+  width: rem($space-l);
+}
+
+.journal-footer {
+  border-top: 1px solid color(grey);
+  padding-top: 3em;
+  margin: 3em 0 2em 0;
+
+  @include respond-to(500, 'max') {
+    align-items: center;
+  }
+
+}
