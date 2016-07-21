@@ -28,24 +28,11 @@ foreach ($sage_includes as $file) {
 unset($file, $filepath);
 
 
+/*
 
+Checking for valid nonce
 
-
-
-
-
-
-// $data = get_userdata( get_current_user_id() );
-//
-// if ( is_object( $data) ) {
-//     $current_user_caps = $data->allcaps;
-//
-//     // print it to the screen
-//     echo '<pre>' . print_r( $current_user_caps, true ) . '</pre>';
-// }
-
-
-
+*/
 function wp_shopify_check_valid_nonce() {
 
   $meta = get_user_meta(2);
@@ -58,6 +45,11 @@ add_action('wp_ajax_wp_shopify_check_valid_nonce', 'wp_shopify_check_valid_nonce
 add_action('wp_ajax_nopriv_wp_shopify_check_valid_nonce', 'wp_shopify_check_valid_nonce');
 
 
+/*
+
+Saving auth data
+
+*/
 function wp_shopify_save_auth_data() {
 
   $data = $_POST['data'];
@@ -70,7 +62,6 @@ function wp_shopify_save_auth_data() {
 
 add_action('wp_ajax_wp_shopify_save_auth_data', 'wp_shopify_save_auth_data');
 add_action('wp_ajax_nopriv_wp_shopify_save_auth_data', 'wp_shopify_save_auth_data');
-
 
 
 
