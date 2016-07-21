@@ -7,38 +7,41 @@ import browserSync from 'browser-sync';
 const config = {
   files: {
     js: [
-      './assets/js/app/**/*.js',
-      '!./assets/js/app.min.js',
-      '!./assets/js/vendor.min.js',
-      '!./assets/js/app.min.js.map'
+      './assets/js/app.js'
     ],
-    jsEntry: './assets/js/app/app.js',
-    css: './assets/css/**/*.scss',
-    cssEntry: './assets/css/app/app.scss'
-  },
-  favicon: {
-    entry: './assets/imgs/favicons/favicon.png',
-    dest: './assets/imgs/favicons',
-    all: './assets/imgs/favicons/**/*'
+    jsEntry: './assets/js/app.js',
+    css: './assets/css/scss/**/*.scss',
+    cssEntry: './assets/css/scss/app.scss',
+    all: './**/*',
+    html: './index.html',
+    filtered: [
+      './fonts/**',
+      './img/**',
+      './meta/**',
+      './js/slick.min.js',
+      './js/bootstrap.min.js',
+      './js/jquery-1.9.1.min.js',
+      './js/html5shiv.js',
+      './js/app.min.js',
+      './css/vendor/slick.min.css',
+      './css/vendor/bootstrap.min.css',
+      './css/style.css',
+      './index.html'
+    ]
   },
   folders: {
     css: './assets/css',
-    js: './assets/js'
+    js: './assets/js',
+    build: './assets/build'
   },
   names: {
     jsVendor: 'vendor.min.js',
     js: 'app.min.js',
     css: 'app.min.css'
   },
-  libs: [
-    'jquery',
-    'rx',
-    'imagesloaded',
-    'lodash'
-  ],
+  libs: [],
   bs: browserSync.create(),
-  serverName: "andrew.dev"
-
+  serverName: "wp-shopify.dev"
 };
 
 export default config;

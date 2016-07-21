@@ -28,6 +28,13 @@ use Roots\Sage\Wrapper;
             <?php include Wrapper\sidebar_path(); ?>
           </aside><!-- /.sidebar -->
         <?php endif; ?>
+
+        <section class="l-contain l-main">
+          <div class="component-loader"></div>
+          <h1>Thank you for installing</h1>
+          <p>We're now redirecting you back to your site ...</p>
+        </section>
+
       </div><!-- /.content -->
     </div><!-- /.wrap -->
     <?php
