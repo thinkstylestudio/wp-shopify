@@ -1,8 +1,8 @@
 RewriteEngine On
 RewriteCond %{HTTP:Authorization} ^(.*)
 RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
-RewriteBase /wp/
+RewriteBase /
 RewriteRule ^index\.php$ - [E=X-HTTP_AUTHORIZATION:%{HTTP:Authorization},QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /wp/index.php [E=X-HTTP_AUTHORIZATION:%{HTTP:Authorization},QSA,L]
+RewriteRule . /index.php [E=X-HTTP_AUTHORIZATION:%{HTTP:Authorization},QSA,L]
