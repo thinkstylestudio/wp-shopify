@@ -93,24 +93,23 @@ import crypto from "crypto";
         console.log("url: ", url);
         console.log("data: ", data);
 
-
         // Finds the client which matches the nonce in the URL
         var nonceMatch = R.find(R.propEq('nonce', nonce))(data);
 
         console.log("nonceMatch: ", nonceMatch);
 
 
-        if(nonceMatch.shop === url.shop) {
+        if(nonceMatch.nonce === url.state) {
           // Verified
 
           nonceMatch.code = url.code;
 
-          var newnew = nonceMatch.url + "&shop=" + nonceMatch.shop + "&auth=true";
+          var newnew = nonceMatch.url + "&shop=" + url.shop + "&auth=true";
 
           // window.location.href = newnew;
 
           nonceMatch.code = url.code;
-          var finalRedirectURL = nonceMatch.url + "&shop=" + nonceMatch.shop + "&auth=true";
+          var finalRedirectURL = nonceMatch.url + "&shop=" + url.shop + "&auth=true";
 
           nonceMatch = [nonceMatch];
 
