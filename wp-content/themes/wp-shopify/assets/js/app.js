@@ -79,7 +79,11 @@ import crypto from "crypto";
 
       var ok = getStoredAuthData();
 
+      console.log("okok: ", ok);
+
       ok.then(function(authData) {
+
+        console.log("authDataauthData: ", authData);
 
         var url = getUrlParams(location.search);
         var nonce = url.state;
@@ -164,7 +168,7 @@ import crypto from "crypto";
         });
 
       });
-      
+
     };
 
 
