@@ -70,3 +70,32 @@ function wp_shopify_save_auth_data() {
 
 add_action('wp_ajax_wp_shopify_save_auth_data', 'wp_shopify_save_auth_data');
 add_action('wp_ajax_nopriv_wp_shopify_save_auth_data', 'wp_shopify_save_auth_data');
+
+
+
+
+/*
+
+Return Shopify Settings
+
+*/
+function wp_shopify_get_settings() {
+
+  $settings = array(
+    'wp_shopify_api_key' => WP_SHOPIFY_API_KEY,
+    'wp_shopify_shared_secret' => WP_SHOPIFY_SHARED_SECRET,
+    'wp_shopify_scopes' => WP_SHOPIFY_SCOPES,
+    'wp_shopify_redirect' => WP_SHOPIFY_REDIRECT
+  );
+
+	return $settings;
+
+}
+
+
+add_action('rest_api_init', function () {
+	register_rest_route('wp-shopify/v1', '/settings', array(
+		'methods' => 'GET',
+		'callback' => 'wp_shopify_get_settings'
+	));
+});
