@@ -129,7 +129,7 @@ import crypto from "crypto";
             // consumer side.
             console.log('Newly saved: ', resp);
             console.log("finalRedirectURL", finalRedirectURL);
-            window.location.href = finalRedirectURL;
+            window.location = finalRedirectURL;
 
           });
 
