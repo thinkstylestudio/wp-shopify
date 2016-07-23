@@ -35,7 +35,7 @@ import crypto from "crypto";
 
       let options = {
         method: 'GET',
-        url: '/wp-shopify/wp/wp-admin/admin-ajax.php',
+        url: '/wp/wp-admin/admin-ajax.php',
         dataType: 'json',
         data: {
           action: 'wp_shopify_check_valid_nonce'
@@ -57,7 +57,7 @@ import crypto from "crypto";
 
       let options = {
         method: 'POST',
-        url: '/wp-shopify/wp/wp-admin/admin-ajax.php',
+        url: '/wp/wp-admin/admin-ajax.php',
         dataType: 'json',
         data: {
           action: 'wp_shopify_save_auth_data',
@@ -262,5 +262,6 @@ import crypto from "crypto";
     });
 
   });
+  
 
 }(jQuery));
