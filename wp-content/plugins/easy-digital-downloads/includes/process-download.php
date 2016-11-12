@@ -332,7 +332,7 @@ function edd_deliver_download( $file = '', $redirect = false ) {
  */
 function edd_is_local_file( $requested_file ) {
 	$home_url       = preg_replace('#^https?://#', '', home_url() );
-	$requested_file = preg_replace('#^https?://#', '', $requested_file );
+	$requested_file = preg_replace('#^(https?|file)://#', '', $requested_file );
 
 	$is_local_url  = strpos( $requested_file, $home_url ) === 0;
 	$is_local_path = strpos( $requested_file, '/' ) === 0;
@@ -739,8 +739,8 @@ function edd_readfile_chunked( $file, $retbytes = true ) {
  * Used to process an old URL format for downloads
  *
  * @since  2.3
- * @param  array $args Arguements provided to download a file
- * @return array       Same arguements, with the status of verification added
+ * @param  array $args Arguments provided to download a file
+ * @return array       Same arguments, with the status of verification added
  */
 function edd_process_legacy_download_url( $args ) {
 
@@ -760,8 +760,8 @@ function edd_process_legacy_download_url( $args ) {
  * Used to process a signed URL for processing downloads
  *
  * @since  2.3
- * @param  array $args Arguements provided to download a file
- * @return array       Same arguements, with the status of verification added
+ * @param  array $args Arguments provided to download a file
+ * @return array       Same arguments, with the status of verification added
  */
 function edd_process_signed_download_url( $args ) {
 

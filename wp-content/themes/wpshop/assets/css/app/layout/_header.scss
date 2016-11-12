@@ -1,0 +1,314 @@
+@keyframes backgroundfadeIn {
+  0%   { background-color: transparent; }
+  100% { background-color: rgba(20, 39, 59, .94); }
+}
+
+.page-header {
+  margin-top: 1em;
+  text-align: center;
+
+  @include respond-to(600, 'max') {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+
+  & + p {
+    margin-top: 0;
+  }
+}
+
+.page-title {
+  display: inline-block;
+}
+
+.page-short-description {
+  font-size: $font-s;
+  margin-top: 1em;
+  margin-bottom: 0;
+
+  &:after {
+    content: '';
+    width: 200px;
+    height: 1px;
+    border-bottom: 1px solid color(grey);
+    display: block;
+    margin: 2em auto;
+  }
+}
+
+.header {
+  z-index: 1;
+  width: 100%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.header-mobile {
+  display: none;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-bottom: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+
+  @include respond-to(1200, 'max') {
+    padding-top: 1em;
+    margin: 0 0 1em;
+    display: flex;
+  }
+
+  .menu-item {
+    float: none;
+    margin: 0;
+
+    a {
+      color: white;
+      font-size: $font-xl;
+      text-align: center;
+      padding: 0.3em 0;
+
+      @include respond-to(600, 'max') {
+        font-size: $font-l;
+      }
+
+    }
+  }
+
+  .nav {
+    display: none;
+    // position: absolute;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    z-index: 9999999;
+
+    &.is-active {
+      display: block;
+      background-color: rgba(20, 39, 59, .97);
+      animation: backgroundfadeIn 0.1s linear;
+
+      .wps-btn-cart {
+        top: 39px;
+
+        @include respond-to(600, 'max') {
+          top: 31px;
+        }
+      }
+    }
+
+    .wps-icon-cart {
+      g {
+        fill: white;
+      }
+    }
+
+  }
+
+  .nav-menu {
+    margin: 0;
+    list-style: none;
+    z-index: 9999999999;
+    position: relative;
+    top: -30px;
+  }
+
+  .wps-icon-cart {
+    height: 40px;
+    width: 40px;
+
+    @include respond-to(600, 'max') {
+      height: 35px;
+      width: 35px;
+    }
+
+    g {
+      fill: color(darkblue);
+    }
+  }
+
+  .wps-cart {
+    z-index: 999999999999999;
+  }
+
+}
+
+.home .header-mobile {
+  @include respond-to(1200, 'max') {
+    margin-bottom: 1em;
+  }
+}
+
+
+.wps-icon-cart {
+  height: 30px;
+  width: 30px;
+
+  g {
+    fill: color(darkblue);
+  }
+}
+
+
+.wps-btn-cart {
+  z-index: 9999999;
+  left: 5%;
+  top: calc(50% - 10px);
+  padding-left: 0;
+  position: absolute;
+
+  @include respond-to(1200, 'max') {}
+
+  @include respond-to(600, 'max') {
+    left: 5%;
+  }
+
+  @include respond-to(320, 'max') {}
+
+}
+
+
+.header-desktop {
+  position: relative;
+  left: -20px;
+
+  .wps-btn-cart {
+    right: 3%;
+    left: auto;
+    top: 33px;
+
+    .wps-cart-counter {
+      top: -12px;
+    }
+  }
+
+  @include respond-to(1200, 'max') {
+    display: none;
+  }
+}
+
+.is-modal .header {
+  z-index: -1;
+}
+
+.header-wrapper {
+  padding: 0;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  margin-left: -1.1em;
+  -webkit-tap-highlight-color: transparent;
+
+  @include respond-to(800, 'max') {
+    justify-content: flex-start;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+Mobile Menu
+
+*/
+.mobile-menu {
+  display: none;
+  width: 45px;
+  max-width: 45px;
+  height: 45px;
+  top: calc(50% - 22px);
+  position: absolute;
+  right: 7%;
+  margin-top: 14px;
+  background: transparent;
+  border: none;
+  outline:none;
+  z-index: 99999999999999;
+
+  @include respond-to(1200, 'max') {
+    display: block;
+    margin-top: 0;
+  }
+
+  @include respond-to(900, 'max') {
+    // right: 30px;
+  }
+
+  @include respond-to(600, 'max') {
+    width: 30px;
+    max-width: 30px;
+    height: 30px;
+    right: 8%;
+    top: calc(50% - 15px);
+  }
+
+  @include respond-to(320, 'max') {
+    right: 10%;
+  }
+
+  span:after,
+  span:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+  }
+
+  span:after {
+    top: 22px;
+  }
+
+  span {
+    position: relative;
+    display: block;
+  }
+
+  span,
+  span:after,
+  span:before {
+    width: 45px;
+    height: 2px;
+    background-color: color(darkblue);
+    transition: all 0.3s;
+    backface-visibility: hidden;
+    border-radius: 2px;
+    display: block;
+    content: '';
+
+    @include respond-to(600, 'max') {
+      width: 30px;
+    }
+  }
+
+  &.is-active span {
+    background-color: transparent;
+  }
+
+  &.is-active span:before {
+    background-color: white;
+    transform: rotate(45deg) translate(0px, 0px);
+  }
+
+  &.is-active span:after {
+    background-color: white;
+    transform: rotate(-45deg) translate(8px, -7px);
+  }
+}

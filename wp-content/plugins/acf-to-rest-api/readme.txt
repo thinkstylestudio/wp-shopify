@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=aires
 Tags: acf, api, rest, wp-api, wp-rest-api, json, wp, wordpress, wp-rest-api
 Requires at least: 4.3
 Tested up to: 4.5
-Stable tag: 2.2.0
+Stable tag: 2.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Exposes Advanced Custom Fields Endpoints in the WP REST API v2 ( WP-API | WordPress REST API )
+Exposes Advanced Custom Fields Endpoints in the WP REST API v2
 
 == Description ==
-Exposes [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) Endpoints in the [WP REST API v2](https://wordpress.org/plugins/rest-api/) ( WP-API | WordPress REST API )
+Exposes [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-fields/) Endpoints in the [WP REST API v2](https://wordpress.org/plugins/rest-api/)
 
 **See details on GitHub:** http://github.com/airesvsg/acf-to-rest-api
 
@@ -20,6 +20,9 @@ Exposes [Advanced Custom Fields](https://wordpress.org/plugins/advanced-custom-f
 2. Activate the `ACF to REST API` plugin via the plugin admin page
 
 == Changelog ==
+
+= 2.2.1 =
+bugfix options page id
 
 = 2.2.0 =
 get specific field via endpoints

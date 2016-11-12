@@ -262,6 +262,6 @@ import crypto from "crypto";
     });
 
   });
-  
+
 
 }(jQuery));

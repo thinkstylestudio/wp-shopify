@@ -30,7 +30,7 @@ class EDD_API {
 	/**
 	 * Latest API Version
 	 */
-	const VERSION = 1;
+	const VERSION = 2;
 
 	/**
 	 * Pretty Print?
@@ -207,6 +207,7 @@ class EDD_API {
 		$vars[] = 'id';
 		$vars[] = 'purchasekey';
 		$vars[] = 'email';
+		$vars[] = 'info';
 
 		return $vars;
 	}
@@ -345,12 +346,12 @@ class EDD_API {
 	}
 
 	/**
-	 * Return whether this is a public query. 
+	 * Return whether this is a public query.
 	 *
 	 * @access private
 	 * @global object $wp_query WordPress Query
 	 * @since 2.6
-	 * @return boolean   
+	 * @return boolean
 	 */
 	private function is_public_query() {
 		global $wp_query;
@@ -621,6 +622,12 @@ class EDD_API {
 
 				break;
 
+			case 'info' :
+
+				$data = $this->routes->get_info();
+
+				break;
+
 		endswitch;
 
 		// Allow extensions to setup their own return data
@@ -668,6 +675,7 @@ class EDD_API {
 			'sales',
 			'discounts',
 			'file-download-logs',
+			'info'
 		) );
 
 		$query = isset( $wp_query->query_vars['edd-api'] ) ? $wp_query->query_vars['edd-api'] : null;
@@ -929,6 +937,17 @@ class EDD_API {
 
 		if( is_numeric( $customer ) ) {
 			$field = 'id';
+		} elseif ( is_array( $customer ) ) {
+			// Checking if search is being done by id, email, user_id fields.
+			if ( array_key_exists( 'id', $customer ) ) {
+				$field = 'id';
+			} elseif ( array_key_exists( 'email', $customer ) ) {
+				$field = 'email';
+			} elseif ( array_key_exists( 'user_id', $customer ) ) {
+				$field = 'user_id';
+			}
+
+			$customer = $customer[ $field ];
 		} else {
 			$field = 'email';
 		}
@@ -991,7 +1010,7 @@ class EDD_API {
 
 		}
 
-		return $customers;
+		return apply_filters( 'edd_api_customers', $customers, $this );
 	}
 
 	/**
@@ -1012,12 +1031,18 @@ class EDD_API {
 
 			$products['products'] = array();
 
-			$product_list = get_posts( array(
+			$parameters = array(
 				'post_type'        => 'download',
 				'posts_per_page'   => $this->per_page(),
 				'suppress_filters' => true,
-				'paged'            => $this->get_paged()
-			) );
+				'paged'            => $this->get_paged(),
+			);
+
+			if ( isset( $args['s'] ) && !empty( $args['s'] ) ) {
+				$parameters['s'] = $args['s'];
+			}
+
+			$product_list = get_posts( $parameters );
 
 			if ( $product_list ) {
 				$i = 0;
@@ -1039,7 +1064,7 @@ class EDD_API {
 			}
 		}
 
-		return $products;
+		return apply_filters( 'edd_api_products', $products, $this );
 	}
 
 	/**
@@ -1235,7 +1260,7 @@ class EDD_API {
 			if ( ! empty( $error ) )
 				return $error;
 
-			return $sales;
+			return apply_filters( 'edd_api_stats_sales', $sales, $this );
 		} elseif ( $args['type'] == 'earnings' ) {
 			if ( $args['product'] == null ) {
 				if ( $args['date'] == null ) {
@@ -1345,24 +1370,24 @@ class EDD_API {
 			if ( ! empty( $error ) )
 				return $error;
 
-			return $earnings;
+			return apply_filters( 'edd_api_stats_earnings', $earnings, $this );
 		} elseif ( $args['type'] == 'customers' ) {
 			if ( version_compare( $edd_version, '2.3', '<' ) || ! edd_has_upgrade_completed( 'upgrade_customer_payments_association' ) ) {
 				global $wpdb;
 				$stats = array();
 				$count = $wpdb->get_col( "SELECT COUNT(DISTINCT meta_value) FROM $wpdb->postmeta WHERE meta_key = '_edd_payment_user_email'" );
 				$stats['customers']['total_customers'] = $count[0];
-				return $stats;
+				return apply_filters( 'edd_api_stats_customers', $stats, $this );
 			} else {
 				$customers = new EDD_DB_Customers();
 				$stats['customers']['total_customers'] = $customers->count();
-				return $stats;
+				return apply_filters( 'edd_api_stats_customers', $stats, $this );
 			}
 		} elseif ( empty( $args['type'] ) ) {
 			$stats = array_merge( $stats, $this->get_default_sales_stats() );
 			$stats = array_merge ( $stats, $this->get_default_earnings_stats() );
 
-			return array( 'stats' => $stats );
+			return apply_filters( 'edd_api_stats', array( 'stats' => $stats, $this ) );
 		}
 	}
 
@@ -1414,6 +1439,8 @@ class EDD_API {
 				$sales['sales'][ $i ]['total']          = $payment->total;
 				$sales['sales'][ $i ]['gateway']        = $payment->gateway;
 				$sales['sales'][ $i ]['email']          = $payment->email;
+				$sales['sales'][ $i ]['user_id']        = $payment->user_id;
+				$sales['sales'][ $i ]['customer_id']    = $payment->customer_id;
 				$sales['sales'][ $i ]['date']           = $payment->date;
 				$sales['sales'][ $i ]['products']       = array();
 
@@ -1450,7 +1477,7 @@ class EDD_API {
 				$i++;
 			}
 		}
-		return $sales;
+		return apply_filters( 'edd_api_sales', $sales, $this );
 	}
 
 	/**
@@ -1536,7 +1563,7 @@ class EDD_API {
 
 		}
 
-		return $discount_list;
+		return apply_filters( 'edd_api_discounts', $discount_list, $this );
 	}
 
 	/**
@@ -1641,7 +1668,67 @@ class EDD_API {
 
 		}
 
-		return $downloads;
+		return apply_filters( 'edd_api_download_logs', $downloads, $this );
+	}
+
+	/**
+	 * Process Get Info API Request
+	 *
+	 * @param array $args Arguments provided by API Request
+	 * @return array
+	 */
+	public function get_info() {
+		$data = array();
+
+		// plugin.php required to use is_plugin_active()
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+		// Integrations
+		if ( is_plugin_active( 'edd-commissions/edd-commissions.php' ) ) {
+			$data['info']['integrations']['commissions'] = true;
+		}
+
+		if ( class_exists( 'EDD_Software_Licensing' ) ) {
+			$data['info']['integrations']['software_licensing'] = true;
+		}
+
+		if ( class_exists( 'EDD_Front_End_Submissions' ) ) {
+			$data['info']['integrations']['fes'] = true;
+		}
+
+		if ( class_exists( 'EDD_Reviews' ) ) {
+			$data['info']['integrations']['reviews'] = true;
+		}
+
+		if ( class_exists( 'EDD_Recurring' ) ) {
+			$data['info']['integrations']['recurring'] = true;
+		}
+
+		// Permissions
+		if ( user_can( $this->user_id, 'view_shop_reports' ) ) {
+			$data['info']['permissions']['view_shop_reports'] = true;
+		}
+
+		if ( user_can( $this->user_id, 'view_shop_sensitive_data' ) ) {
+			$data['info']['permissions']['view_shop_sensitive_data'] = true;
+		}
+
+		if ( user_can( $this->user_id, 'manage_shop_discounts' ) ) {
+			$data['info']['permissions']['manage_shop_discounts'] = true;
+		}
+
+		// Site Information
+		if ( user_can( $this->user_id, 'view_shop_sensitive_data' ) ) {
+			$data['info']['site']['wp_version'] = get_bloginfo( 'version' );
+			$data['info']['site']['edd_version'] = EDD_VERSION;
+		}
+
+		$data['info']['site']['currency']            = edd_get_currency();
+		$data['info']['site']['currency_position']   = edd_get_option( 'currency_position', 'before' );
+		$data['info']['site']['decimal_separator']   = edd_get_option( 'decimal_separator', '.' );
+		$data['info']['site']['thousands_separator'] = edd_get_option( 'thousands_separator', ',' );
+
+		return apply_filters( 'edd_api_info', $data, $this );
 	}
 
 	/**

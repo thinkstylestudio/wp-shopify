@@ -41,7 +41,7 @@ const config = {
   },
   libs: [],
   bs: browserSync.create(),
-  serverName: "wp-shopify.dev"
+  serverName: "wpshop.dev"
 };
 
 export default config;

@@ -82,8 +82,8 @@ class WO_Table extends WP_List_Table {
 
 		$query = "SELECT * FROM {$wpdb->prefix}oauth_clients";
 
-		$orderby = ! empty( $_GET['orderby'] ) ? mysql_real_escape_string( $_GET['orderby'] ) : 'ASC';
-		$order = ! empty( $_GET['order'] ) ? mysql_real_escape_string( $_GET['order'] ) : '';
+		$orderby = ! empty( $_GET['orderby'] ) ? esc_sql( $_GET['orderby'] ) : 'ASC';
+		$order = ! empty( $_GET['order'] ) ? esc_sql( $_GET['order'] ) : '';
 		
 		if( ! empty( $orderby ) & ! empty( $order ) ) { 
 			$query .= ' ORDER BY ' . $orderby . ' ' . $order; 
@@ -91,7 +91,7 @@ class WO_Table extends WP_List_Table {
 
 		$totalitems = $wpdb->query( $query );
 		$perpage = 5;
-		$paged = ! empty( $_GET['paged'] ) ? mysql_real_escape_string( $_GET['paged'] ) : '';
+		$paged = ! empty( $_GET['paged'] ) ? esc_sql( $_GET['paged'] ) : '';
 		
 		if( empty( $paged ) || ! is_numeric( $paged ) || $paged <= 0 ) { 
 			$paged = 1; 

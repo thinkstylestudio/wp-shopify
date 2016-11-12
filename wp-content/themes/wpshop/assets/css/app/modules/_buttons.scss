@@ -1,0 +1,40 @@
+.btn {
+  padding: 1em 2em;
+  color: color(white);
+  background-color: color(lightgreen);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: $font-m;
+  font-family: $font-primary;
+  display: inline-block;
+  border-radius: none;
+  position: relative;
+  line-height: 1;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  text-shadow: 0 3px 0 rgba(52,79,73,.20);
+
+  // @include grow();
+  @include dropShadow();
+  @include shrink();
+
+  &:hover {
+    background-color: #47a67e;
+
+    &.is-disabled {
+      background-color: color(lightgreen);
+    }
+  }
+
+  &:focus {
+    border: none;
+    outline: none;
+    background-color: #47a67e;
+  }
+
+}
+
+.btn-lg {
+  font-size: $font-l;
+}

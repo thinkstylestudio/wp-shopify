@@ -66,8 +66,18 @@ function edd_complete_purchase( $payment_id, $new_status, $old_status ) {
 
 			}
 
+			$increase_earnings = $download['price'];
+			if ( ! empty( $download['fees'] ) ) {
+				foreach ( $download['fees'] as $fee ) {
+					if ( $fee['amount'] > 0 ) {
+						continue;
+					}
+					$increase_earnings += $fee['amount'];
+				}
+			}
+
 			// Increase the earnings for this download ID
-			edd_increase_earnings( $download['id'], $download['price'] );
+			edd_increase_earnings( $download['id'], $increase_earnings );
 			edd_increase_purchase_count( $download['id'], $download['quantity'] );
 
 		}
@@ -314,3 +324,45 @@ function edd_update_payment_backwards_compat( $meta_id, $object_id, $meta_key, $
 
 }
 add_action( 'updated_postmeta', 'edd_update_payment_backwards_compat', 10, 4 );
+
+/**
+ * Deletes edd_stats_ transients that have expired to prevent database clogs
+ *
+ * @since 2.6.7
+ * @return void
+*/
+function edd_cleanup_stats_transients() {
+	global $wpdb;
+
+	if ( defined( 'WP_SETUP_CONFIG' ) ) {
+		return;
+	}
+
+	if ( defined( 'WP_INSTALLING' ) ) {
+		return;
+	}
+
+	$now        = current_time( 'timestamp' );
+	$transients = $wpdb->get_results( "SELECT option_name, option_value FROM $wpdb->options WHERE option_name LIKE '%\_transient_timeout\_edd\_stats\_%' AND option_value+0 < $now LIMIT 0, 200;" );
+	$to_delete  = array();
+
+	if( ! empty( $transients ) ) {
+
+		foreach( $transients as $transient ) {
+
+			$to_delete[] = $transient->option_name;
+			$to_delete[] = str_replace( '_timeout', '', $transient->option_name );
+
+		}
+
+	}
+
+	if ( ! empty( $to_delete ) ) {
+
+		$option_names = implode( "','", $to_delete );
+		$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name IN ('$option_names')"  );
+
+	}
+
+}
+add_action( 'edd_daily_scheduled_events', 'edd_cleanup_stats_transients' );

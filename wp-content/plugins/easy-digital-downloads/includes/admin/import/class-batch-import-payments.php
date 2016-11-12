@@ -94,12 +94,12 @@ class EDD_Batch_Payments_Import extends EDD_Batch_Import {
 			foreach( $this->csv->data as $key => $row ) {
 
 				// Skip all rows until we pass our offset
-				if( $key + 1 < $offset ) {
+				if( $key + 1 <= $offset ) {
 					continue;
 				}
 
 				// Done with this batch
-				if( $i >= $this->per_step ) {
+				if( $i > $this->per_step ) {
 					break;
 				}
 
@@ -149,11 +149,11 @@ class EDD_Batch_Payments_Import extends EDD_Batch_Import {
 
 			if( ! strtotime( $date ) ) {
 
-				$date = date( 'Y-n-d H:i:s', current_time( 'timestamp' ) );
+				$date = date( 'Y-m-d H:i:s', current_time( 'timestamp' ) );
 
 			} else {
 
-				$date = date( 'Y-n-d H:i:s', strtotime( $date ) );
+				$date = date( 'Y-m-d H:i:s', strtotime( $date ) );
 
 			}
 

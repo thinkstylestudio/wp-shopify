@@ -39,20 +39,6 @@ function wo_server_status_page (){
 			</td>
 		</tr>
 
-		<tr>
-			<th style="text-align:left;">Certificates Generated: </th>
-			<td>
-				<?php echo !wo_has_certificates() ? " <span style='color:red;'>No Certificates Found</span>" : "<span style='color:green;'>Certificates Found</span>"?>
-			</td>
-		</tr>
-
-		<tr>
-			<th style="text-align:left;">License: </th>
-			<td>
-				<?php echo !_vl() ? " <span style='color:orange;'>Standard" : "<span style='color:green;'>Licensed</span>"?>
-			</td>
-		</tr>
-
 	</table>
 </div>
 <?php

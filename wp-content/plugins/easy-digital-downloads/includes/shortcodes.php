@@ -173,12 +173,7 @@ add_shortcode( 'download_cart', 'edd_cart_shortcode' );
  * @return string
  */
 function edd_login_form_shortcode( $atts, $content = null ) {
-	$redirect         = home_url();
-	$purchase_history = edd_get_option( 'purchase_history_page', 0 );
-
-	if ( ! empty( $purchase_history ) ) {
-		$redirect = get_permalink( $purchase_history );
-	}
+	$redirect = '';
 
 	extract( shortcode_atts( array(
 			'redirect' => $redirect
@@ -186,7 +181,23 @@ function edd_login_form_shortcode( $atts, $content = null ) {
 	);
 
 	if ( empty( $redirect ) ) {
-		$redirect = get_permalink( edd_get_option( 'login_redirect_page', '' ) );
+		$login_redirect_page = edd_get_option( 'login_redirect_page', '' );
+
+		if ( ! empty( $login_redirect_page ) ) {
+			$redirect = get_permalink( $login_redirect_page );
+		}
+	}
+
+	if ( empty( $redirect ) ) {
+		$purchase_history = edd_get_option( 'purchase_history_page', 0 );
+
+		if ( ! empty( $purchase_history ) ) {
+			$redirect = get_permalink( $purchase_history );
+		}
+	}
+
+	if ( empty( $redirect ) ) {
+		$redirect = home_url();
 	}
 
 	return edd_login_form( $redirect );
@@ -221,7 +232,7 @@ function edd_register_form_shortcode( $atts, $content = null ) {
 add_shortcode( 'edd_register', 'edd_register_form_shortcode' );
 
 /**
- * Discounts short code
+ * Discounts shortcode
  *
  * Displays a list of all the active discounts. The active discounts can be configured
  * from the Discount Codes admin screen.
@@ -313,6 +324,7 @@ function edd_downloads_query( $atts, $content = null ) {
 		'exclude_category' => '',
 		'tags'             => '',
 		'exclude_tags'     => '',
+		'author'           => false,
 		'relation'         => 'OR',
 		'number'           => 9,
 		'price'            => 'no',
@@ -324,7 +336,7 @@ function edd_downloads_query( $atts, $content = null ) {
 		'orderby'          => 'post_date',
 		'order'            => 'DESC',
 		'ids'              => '',
-		'pagination'       => 'true'
+		'pagination'       => 'true',
 	), $atts, 'downloads' );
 
 	$query = array(
@@ -522,6 +534,30 @@ function edd_downloads_query( $atts, $content = null ) {
 
 	if ( $atts['exclude_tags'] || $atts['exclude_category'] ) {
 		$query['tax_query']['relation'] = 'AND';
+	}
+
+	if ( $atts['author'] ) {
+		$authors = explode( ',', $atts['author'] );
+		if ( ! empty( $authors ) ) {
+			$author_ids = array();
+			$author_names = array();
+
+			foreach ( $authors as $author ) {
+				if ( is_numeric( $author ) ) {
+					$author_ids[] = $author;
+				} else {
+					$user = get_user_by( 'login', $author );
+					if ( $user ) {
+						$author_ids[] = $user->ID;
+					}
+				}
+			}
+
+			if ( ! empty( $author_ids ) ) {
+				$author_ids      = array_unique( array_map( 'absint', $author_ids ) );
+				$query['author'] = implode( ',', $author_ids );
+			}
+		}
 	}
 
 	if( ! empty( $atts['ids'] ) )

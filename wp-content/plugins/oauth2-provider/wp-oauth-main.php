@@ -12,26 +12,26 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 class WO_Server {
 
 	/** Plugin Version */
-	public $version = "3.1.97";
+	public $version = "3.2.001";
 
 	/** Server Instance */
 	public static $_instance = null;
 
 	/** Default Settings */
 	protected $defualt_settings = array(
-		"enabled" => 1,
-		"client_id_length" => 30,
-		"auth_code_enabled" => 1,
-		"client_creds_enabled" => 0,
-		"user_creds_enabled" => 0,
-		"refresh_tokens_enabled" => 0,
-		"implicit_enabled" => 0,
+		"enabled"                    => 1,
+		"client_id_length"           => 30,
+		"auth_code_enabled"          => 1,
+		"client_creds_enabled"       => 0,
+		"user_creds_enabled"         => 0,
+		"refresh_tokens_enabled"     => 0,
+		"implicit_enabled"           => 0,
 		"require_exact_redirect_uri" => 0,
-		"enforce_state" => 0,
-		"refresh_token_lifetime" => 864000, // 10 Days
-		"access_token_lifetime"	=> 86400, // 24 Hours
-		"use_openid_connect" => 0,
-		"id_lifetime" => 3600  
+		"enforce_state"              => 0,
+		"refresh_token_lifetime"     => 864000, // 10 Days
+		"access_token_lifetime"      => 86400, // 24 Hours
+		"use_openid_connect"         => 0,
+		"id_lifetime"                => 3600
 	);
 
 	function __construct() {
@@ -41,49 +41,54 @@ class WO_Server {
 		}
 
 		if ( ! defined( 'WOURI' ) ) {
-			define( 'WOURI', plugins_url( '/', __FILE__) );
+			define( 'WOURI', plugins_url( '/', __FILE__ ) );
 		}
 
 		if ( function_exists( '__autoload' ) ) {
 			spl_autoload_register( '__autoload' );
 		}
-		spl_autoload_register( array( $this, 'autoload') );
+		spl_autoload_register( array( $this, 'autoload' ) );
 
-		
-		add_filter( 'determine_current_user', array($this, '_wo_authenicate_bypass'), 21);
-		add_action("init", array(__CLASS__, "includes"));
+
+		add_filter( 'determine_current_user', array( $this, '_wo_authenicate_bypass' ), 21 );
+		add_action( "init", array( __CLASS__, "includes" ) );
 
 	}
 
 	/**
 	 * Awesomeness for 3rd party support
-	 * 
+	 *
 	 * Filter; determine_current_user
 	 * Other Filter: check_authentication
 	 *
-	 * This creates a hook in the determine_current_user filter that can check for a valid access_token 
+	 * This creates a hook in the determine_current_user filter that can check for a valid access_token
 	 * and user services like WP JSON API and WP REST API.
+	 *
 	 * @param  [type] $user_id User ID to
 	 *
 	 * @author Mauro Constantinescu Modified slightly but still a contribution to the project.
+	 *
+	 * @return Int User ID if valid
 	 */
 	public function _wo_authenicate_bypass( $user_id ) {
-		if ( $user_id && $user_id > 0 ) 
+		if ( $user_id && $user_id > 0 ) {
 			return (int) $user_id;
+		}
 
 		$o = get_option( 'wo_options' );
-		if ( $o['enabled'] == 0 ) 
-		return (int) $user_id;
-		
-		require_once( dirname( WPOAUTH_FILE ) . '/library/OAuth2/Autoloader.php');
+		if ( $o['enabled'] == 0 ) {
+			return (int) $user_id;
+		}
+
+		require_once( dirname( WPOAUTH_FILE ) . '/library/OAuth2/Autoloader.php' );
 		OAuth2\Autoloader::register();
-		$server = new OAuth2\Server( new OAuth2\Storage\Wordpressdb() );
+		$server  = new OAuth2\Server( new OAuth2\Storage\Wordpressdb() );
 		$request = OAuth2\Request::createFromGlobals();
 		if ( $server->verifyResourceRequest( $request ) ) {
 			$token = $server->getAccessTokenData( $request );
 			if ( isset( $token['user_id'] ) && $token['user_id'] > 0 ) {
-				return (int) $token['user_id'];	
-			}elseif( isset( $token['user_id'] ) && $token['user_id'] === 0 ) {
+				return (int) $token['user_id'];
+			} elseif ( isset( $token['user_id'] ) && $token['user_id'] === 0 ) {
 
 			}
 		}
@@ -106,9 +111,9 @@ class WO_Server {
 	 * @return void
 	 */
 	public function autoload( $class ) {
-		$path = null;
+		$path  = null;
 		$class = strtolower( $class );
-		$file = 'class-' . str_replace( '_', '-', $class ) . '.php';
+		$file  = 'class-' . str_replace( '_', '-', $class ) . '.php';
 
 		if ( strpos( $class, "wo_" ) === 0 ) {
 			$path = dirname( __FILE__ ) . '/library/' . trailingslashit( substr( str_replace( '_', '-', $class ), 18 ) );
@@ -116,37 +121,39 @@ class WO_Server {
 
 		if ( $path && is_readable( $path . $file ) ) {
 			include_once $path . $file;
+
 			return;
 		}
 	}
 
 	/**
 	 * plugin includes called during load of plugin
+	 *
 	 * @return void
 	 */
 	public static function includes() {
 		require_once dirname( __FILE__ ) . '/includes/functions.php';
 		require_once dirname( __FILE__ ) . '/includes/admin-options.php';
-		//require_once dirname( __FILE__ ) . '/includes/rewrites.php';
 
 		/** include the ajax class if DOING_AJAX is defined */
-		if (defined('DOING_AJAX')) {
-			require_once dirname(__FILE__) . '/includes/ajax/class-wo-ajax.php';
+		if ( defined( 'DOING_AJAX' ) ) {
+			require_once dirname( __FILE__ ) . '/includes/ajax/class-wo-ajax.php';
 		}
 
 		/** Daily Crons */
 		if ( ! wp_next_scheduled( 'wo_daily_tasks_hook' ) ) {
-		  wp_schedule_event( time(), 'hourly', 'wo_daily_tasks_hook' );
+			wp_schedule_event( time(), 'hourly', 'wo_daily_tasks_hook' );
 		}
 	}
 
 	/**
 	 * plugin setup. this is only ran on activation
-	 * @return [type] [description]
+	 *
+	 * @return void
 	 */
 	public function setup() {
 		$options = get_option( "wo_options" );
-		if (! isset( $options["enabled"] ) ) {
+		if ( ! isset( $options["enabled"] ) ) {
 			update_option( "wo_options", $this->defualt_settings );
 		}
 
@@ -155,27 +162,28 @@ class WO_Server {
 
 	/**
 	 * plugin update check
-	 * @return [type] [description]
+	 *
+	 * @return void
 	 */
 	public function install() {
-		
+
 		/** Install the required tables in the database */
 		global $wpdb;
 
 		$charset_collate = '';
 
 		/** Set charset to current wp option */
-		if (!empty($wpdb->charset)) {
+		if ( ! empty( $wpdb->charset ) ) {
 			$charset_collate = "DEFAULT CHARACTER SET {$wpdb->charset}";
 		}
 
 		/** Set collate to current wp option */
-		if (!empty($wpdb->collate)) {
+		if ( ! empty( $wpdb->collate ) ) {
 			$charset_collate .= " COLLATE {$wpdb->collate}";
 		}
 
 		/** Update the version in the database */
-		update_option("wpoauth_version", $this->version);
+		update_option( "wpoauth_version", $this->version );
 
 		$sql1 = "
 			CREATE TABLE IF NOT EXISTS {$wpdb->prefix}oauth_clients (
@@ -235,82 +243,38 @@ class WO_Server {
       );
 			";
 
-		$sql6 = "
-			CREATE TABLE IF NOT EXISTS {$wpdb->prefix}oauth_jwt (
-        client_id           VARCHAR(80)   NOT NULL,
-        subject             VARCHAR(80),
-        public_key          VARCHAR(2000) NOT NULL,
-        PRIMARY KEY (client_id)
-      );
-			";
-
-		$sql7 = "
-			CREATE TABLE IF NOT EXISTS {$wpdb->prefix}oauth_public_keys (
-        client_id            VARCHAR(80),
-        public_key           VARCHAR(2000),
-        private_key          VARCHAR(2000),
-        encryption_algorithm VARCHAR(100) DEFAULT 'RS256',
-        PRIMARY KEY (client_id)
-      );
-			";
-
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-		dbDelta($sql1);
-		dbDelta($sql2);
-		dbDelta($sql3);
-		dbDelta($sql4);
-		dbDelta($sql5);
-		dbDelta($sql6);
-		dbDelta($sql7);
-
-		/**
-		 * Create certificates for signing
-		 *
-		 */
-		if( function_exists( 'openssl_pkey_new' ) ){
-			$res = openssl_pkey_new( array(
-			    "private_key_bits" => 2048,
-			    "private_key_type" => OPENSSL_KEYTYPE_RSA,
-			));
-			openssl_pkey_export( $res, $privKey );
-			file_put_contents(dirname( WPOAUTH_FILE) . '/library/keys/private_key.pem', $privKey);
-
-			$pubKey = openssl_pkey_get_details($res);
-			$pubKey = $pubKey["key"];
-			file_put_contents(dirname(WPOAUTH_FILE) . '/library/keys/public_key.pem', $pubKey);
-
-			// Update plugin version
-			$plugin_data = get_plugin_data( WPOAUTH_FILE );
-			$plugin_version = $plugin_data['Version'];
-			update_option( 'wpoauth_version', $plugin_version );
-		}
-
+		dbDelta( $sql1 );
+		dbDelta( $sql2 );
+		dbDelta( $sql3 );
+		dbDelta( $sql4 );
+		dbDelta( $sql5 );
 	}
 
 	/**
 	 * Upgrade method
-	 * 
+	 *
 	 */
-	public function upgrade () {
+	public function upgrade() {
 		$options = get_option( 'wo_options' );
 
 		// added 3.0.4
-		if( ! isset( $options['access_token_lifetime'] ) ) {
+		if ( ! isset( $options['access_token_lifetime'] ) ) {
 			$options['access_token_lifetime'] = 3600;
 		}
 
 		// added 3.0.4
-		if( ! isset( $options['refresh_token_lifetime'] ) ) {
+		if ( ! isset( $options['refresh_token_lifetime'] ) ) {
 			$options['refresh_token_lifetime'] = 86400;
 		}
 
 		// added 3.0.5
-		if( ! isset( $options['id_token_lifetime'] ) ) {
+		if ( ! isset( $options['id_token_lifetime'] ) ) {
 			$options['id_token_lifetime'] = 3600;
 		}
 
 		// added 3.0.5
-		if( ! isset( $options['use_openid_connect'] ) ) {
+		if ( ! isset( $options['use_openid_connect'] ) ) {
 			$options['use_openid_connect'] = 3600;
 		}
 
@@ -322,4 +286,5 @@ class WO_Server {
 function _WO() {
 	return WO_Server::instance();
 }
+
 $GLOBAL['WO'] = _WO();

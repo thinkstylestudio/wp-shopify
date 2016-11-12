@@ -192,7 +192,7 @@ function edd_sl_process_deactivate_site() {
 	}
 
 	$license_id = absint( $_GET['license_id'] );
-	$user_id    = get_post_meta( $license_id, '_edd_sl_user_id', true );
+	$user_id    = edd_software_licensing()->get_user_id( $license_id );
 
 	if( ! current_user_can( 'edit_shop_payments' ) && $user_id != get_current_user_id() ) {
 		return;
@@ -222,7 +222,7 @@ function edd_sl_process_add_site() {
 
 	$license_id  = absint( $_GET['license_id'] );
 	$download_id = edd_software_licensing()->get_download_id( $license_id );
-	$user_id     = get_post_meta( $license_id, '_edd_sl_user_id', true );
+	$user_id     = edd_software_licensing()->get_user_id( $license_id );
 
 	if( ! current_user_can( 'edit_shop_payments' ) && $user_id != get_current_user_id() ) {
 		return;
@@ -273,9 +273,9 @@ function edd_sl_admin_update_expiration() {
 	if ( ! $is_lifetime ) {
 
 		$expiration  = sanitize_text_field( $_POST['expiration'] ) . '23:59:59';
-		$expiration  = strtotime( $expiration );
+		$expiration  = strtotime( $expiration, current_time( 'timestamp' ) );
 
-		if( 'expired' == edd_software_licensing()->get_license_status( $license_id ) && $expiration > time() ) {
+		if( 'expired' == edd_software_licensing()->get_license_status( $license_id ) && $expiration > current_time( 'timestamp' ) ) {
 			edd_software_licensing()->set_license_status( $license_id, 'active' );
 		}
 
@@ -301,7 +301,6 @@ function edd_sl_admin_update_expiration() {
 
 		edd_software_licensing()->set_license_as_lifetime( $license_id );
 		edd_software_licensing()->set_license_status( $license_id, 'active' );
-		delete_post_meta( $license_id, '_edd_sl_expiration' );
 
 		// Update expiration date for child licenses.
 		$args = array(
@@ -325,117 +324,6 @@ function edd_sl_admin_update_expiration() {
 
 }
 add_action( 'edd_update_license_expiration', 'edd_sl_admin_update_expiration' );
-
-
-/**
- * Handle the ajax call, no need for nopriv handling since this is admin only
- *
- * @access      private
- * @since       2.6
- * @return      void
-*/
-function edd_sl_generate_download_keys_ajax_callback() {
-
-	if( ! current_user_can( 'edit_shop_payments') ) {
-		status_header( 404 );
-		die();
-	}
-
-	// If there is no download ID posted, breakout immediately because we cannot find the download
-	if( ! isset( $_POST['download'] ) ) {
-		status_header( 404 );
-		die();
-	}
-
-	// Grab the download ID and make sure its an int
-	$download = intval( $_POST['download'] );
-
-	// Make sure the post we are looking at is a download, otherwise the post (media type) is unsupported!
-	if( get_post_type( $download ) !== 'download' ) {
-		status_header( 415 );
-		die();
-	}
-
-	// Gather all the payments, and individual download IDs so we can verify licenses exist
-	$args = array(
-		'download' => $download,
-		'number'   => -1
-	);
-	$query    = new EDD_Payments_Query( $args );
-	$payments = $query->get_payments();
-
-	$is_bundle = edd_is_bundled_product( $download );
-	$downloads = $is_bundle ? edd_get_bundled_products( $download ) : array( $download );
-
-	// Loop through the payments, and then the downloads, and maybe generate licenses
-	$generated = 0;
-	$updated   = 0;
-	foreach( $payments as $payment ) {
-
-		if ( $is_bundle ) {
-			$parent_license = edd_software_licensing()->get_license_by_purchase( $payment->ID, $download );
-		}
-
-		foreach( $downloads as $d ) {
-
-			// If download ID is empty, continue
-			if( empty( $d ) ) continue;
-
-			// Maybe generate a key, and if we do increase the count
-			$license = edd_software_licensing()->get_license_by_purchase( $payment->ID, $d );
-
-			// If no license exists... generate one!
-			if( ! $license ) {
-				add_action( 'edd_sl_store_license', 'edd_sl_log_generated_license', 10, 4 );
-
-				$key        = edd_software_licensing()->generate_license( $d, $payment->ID );
-				$license    = edd_software_licensing()->get_license_by_purchase( $payment->ID, $d );
-
-				if ( $is_bundle && $key ) {
-
-					// Set the post parent to the Bundle Key
-					$update_args = array(
-						'ID'          => $license->ID,
-						'post_parent' => $parent_license->ID,
-					);
-
-					wp_update_post( $update_args );
-				}
-
-				remove_action( 'edd_sl_store_license', 'edd_sl_log_generated_license', 10 );
-
-				// Return true if a key was generated
-				if( $key ) {
-					$generated++;
-				}
-			} elseif ( $is_bundle && $license ) {
-
-				if ( empty( $license->post_parent ) ) {
-
-					// Set the post parent to the Bundle Key
-					$update_args = array(
-						'ID'          => $license->ID,
-						'post_parent' => $parent_license->ID,
-					);
-
-					wp_update_post( $update_args );
-					$updated++;
-
-				}
-
-			}
-
-		}
-	}
-
-	// We must die, or we live too long... but we must speak our last workd.
-	printf( _n( 'One key was generated', '%d keys were generated.', $generated ), $generated );
-	echo '<br />';
-	printf( _n( 'One key was updated', '%d keys were updated.', $updated ), $updated );
-
-	die();
-}
-add_action( 'wp_ajax_edd_sl_generate_download_keys', 'edd_sl_generate_download_keys_ajax_callback' );
 
 /**
  * Action to add the generated license to the license log when generating new keys for a Download
@@ -580,10 +468,10 @@ function edd_sl_ajax_get_license_logs() {
 				if( isset( $data->HTTP_USER_AGENT ) ) {
 					$html .= esc_html( $data->HTTP_USER_AGENT ) . ' - ';
 				}
-				if( isset( $data->HTTP_USER_AGENT ) ) {
+				if( isset( $data->REMOTE_ADDR ) ) {
 					$html .= 'IP: ' . esc_html( $data->REMOTE_ADDR ) . ' - ';
 				}
-				if( isset( $data->HTTP_USER_AGENT ) ) {
+				if( isset( $data->REQUEST_TIME ) ) {
 					$html .= esc_html( date_i18n( get_option( 'date_format' ), $data->REQUEST_TIME ) . ' ' . date_i18n( get_option( 'time_format' ), $data->REQUEST_TIME ) );
 				}
 				$html .= '</li>';

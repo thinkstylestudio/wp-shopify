@@ -1,0 +1,79 @@
+.is-visible {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+
+  @include transition-fast;
+}
+
+// Disabled
+.is-disabled {
+  @include dim($opacity-light);
+
+  &:hover {
+    cursor: not-allowed !important;
+  }
+}
+
+.is-hidden {
+  display: none;
+  opacity: 0;
+  @include transition-fast;
+}
+
+.is-noscroll {
+  overflow: hidden;
+  position: fixed;
+}
+
+.is-gone {
+  display: none;
+}
+
+.is-here {
+  display: block;
+}
+
+.is-closed {
+  display: none;
+}
+
+.is-circle {
+  border-radius: 50%;
+  display: block;
+  -webkit-backface-visibility: hidden;
+}
+
+.is-closer {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    z-index: 2;
+
+    @include shadow();
+  }
+
+}
+
+.has-shadow {
+  &:hover {
+    @include shadow();
+  }
+}
+
+//TODO: turn into action
+.wps-is-facebook {
+  &:before {
+    content: '';
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    position: relative;
+    top: 0.19em;
+    margin-left: 0.5em;
+    margin-right: 0.3em;
+    background-size: cover;
+    background-image: url('../imgs/icon-fb-messenger.svg');
+  }
+}

@@ -94,7 +94,7 @@ function edd_get_cart_content_details() {
 
 		$total      = $subtotal - $discount + $tax;
 
-		// Do not allow totals to go negatve
+		// Do not allow totals to go negative
 		if( $total < 0 ) {
 			$total = 0;
 		}
@@ -199,6 +199,8 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 		$options['price_id'] = explode( ',', $options['price_id'] );
 	}
 
+	$items = array();
+
 	if ( isset( $options['price_id'] ) && is_array( $options['price_id'] ) ) {
 
 		// Process multiple price options at once
@@ -233,8 +235,10 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 		);
 	}
 
-	foreach ( $items as $item ) {
-		$to_add = apply_filters( 'edd_add_to_cart_item', $item );
+	foreach ( $items as &$item ) {
+		$item = apply_filters( 'edd_add_to_cart_item', $item );
+		$to_add = $item;
+
 		if ( ! is_array( $to_add ) )
 			return;
 
@@ -259,9 +263,11 @@ function edd_add_to_cart( $download_id, $options = array() ) {
 		}
 	}
 
+	unset( $item );
+
 	EDD()->session->set( 'edd_cart', $cart );
 
-	do_action( 'edd_post_add_to_cart', $download_id, $options );
+	do_action( 'edd_post_add_to_cart', $download_id, $options, $items );
 
 	// Clear all the checkout errors, if any
 	edd_clear_errors();
@@ -392,6 +398,9 @@ function edd_set_cart_item_quantity( $download_id = 0, $quantity = 1, $options =
 
 	$cart[ $key ]['quantity'] = $quantity;
 	EDD()->session->set( 'edd_cart', $cart );
+
+	do_action( 'edd_after_set_cart_item_quantity', $download_id, $quantity, $options, $cart );
+
 	return $cart;
 
 }

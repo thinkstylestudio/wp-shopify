@@ -114,6 +114,12 @@ class EDD_Tracking {
 	 */
 	public function send_checkin( $override = false, $ignore_last_checkin = false ) {
 
+		$home_url = trailingslashit( home_url() );
+		// Allows us to stop our own site from checking in, and a filter for our additional sites
+		if ( $home_url === 'https://easydigitaldownloads.com/' || apply_filters( 'edd_disable_tracking_checkin', false ) ) {
+			return false;
+		}
+
 		if( ! $this->tracking_allowed() && ! $override ) {
 			return false;
 		}
@@ -157,7 +163,7 @@ class EDD_Tracking {
 	public function check_for_settings_optin( $input ) {
 		// Send an intial check in on settings save
 
-		if( isset( $input['allow_tracking'] ) ) {
+		if( isset( $input['allow_tracking'] ) && $input['allow_tracking'] == 1 ) {
 			$this->send_checkin( true );
 		}
 

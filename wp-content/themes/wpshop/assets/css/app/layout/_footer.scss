@@ -1,0 +1,10 @@
+.footer {
+  background: grey;
+  @include respond-to(800, 'max') {}
+}
+
+#menu-footer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}

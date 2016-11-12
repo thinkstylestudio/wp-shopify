@@ -1,0 +1,395 @@
+$margin: 1.5em;
+$gutterWidth: 1em;
+$containerWidth: 94vw;
+$maxWidth: 1800px;
+$contentWidthNarrow: 800px;
+$cols-1: 1;
+$cols-2: 2;
+$cols-3: 3;
+$cols-4: 4;
+$cols-5: 5;
+$cols-6: 6;
+$cols-7: 7;
+$cols-8: 8;
+$cols-9: 9;
+$cols-10: 10;
+$cols-11: 11;
+$cols-12: 12;
+
+//
+// Grid, nice n simple
+//
+.l-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 0;
+  max-width: $maxWidth;
+}
+
+.l-col {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+}
+
+[class*="wps-l-box"] {
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 1px;
+  padding: $gutterWidth;
+  flex: 1 1 0;
+
+  @include respond-to(320, 'max') {
+    // padding: 2em;
+  }
+}
+
+
+
+
+
+
+.l-contain {
+  max-width: $containerWidth;
+  margin: 0 auto;
+
+  @include respond-to(1200, 'max') {
+    max-width: 94vw;
+  }
+
+  @include siteMaxWidth();
+
+}
+
+.l-contain-narrow {
+  max-width: $contentWidthNarrow;
+  margin: 0 auto;
+
+  @include respond-to(1000, 'max') {
+    max-width: 700px;
+  }
+
+  @include respond-to(600, 'max') {
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+/*
+
+Columns (as a proportion)
+E.g., 2 === one half, 3 === one third, 4 === one fourth, etc
+
+*/
+.l-box-2 {
+  @include rowMachine($cols-2);
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-3 {
+  @include rowMachine($cols-3);
+
+  @include respond-to(900, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-4 {
+  @include rowMachine($cols-4);
+
+  @include respond-to(800, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-5 {
+  @include rowMachine($cols-5);
+
+  @include respond-to(800, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-6 {
+  @include rowMachine($cols-6);
+
+  @include respond-to(1000, 'max') {
+    @include rowMachine($cols-4);
+  }
+
+  @include respond-to(800, 'max') {
+    @include rowMachine($cols-3);
+  }
+
+  @include respond-to(700, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-7 {
+  @include rowMachine($cols-7);
+
+  @include respond-to(1100, 'max') {
+    @include rowMachine($cols-5);
+  }
+
+  @include respond-to(900, 'max') {
+    @include rowMachine($cols-4);
+  }
+
+  @include respond-to(700, 'max') {
+    @include rowMachine($cols-3);
+  }
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-8 {
+  @include rowMachine($cols-8);
+
+  @include respond-to(1100, 'max') {
+    @include rowMachine($cols-5);
+  }
+
+  @include respond-to(900, 'max') {
+    @include rowMachine($cols-4);
+  }
+
+  @include respond-to(700, 'max') {
+    @include rowMachine($cols-3);
+  }
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-9 {
+  @include rowMachine($cols-9);
+
+  @include respond-to(1100, 'max') {
+    @include rowMachine($cols-8);
+  }
+
+  @include respond-to(900, 'max') {
+    @include rowMachine($cols-4);
+  }
+
+  @include respond-to(700, 'max') {
+    @include rowMachine($cols-3);
+  }
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-10 {
+  @include rowMachine($cols-10);
+
+  @include respond-to(1100, 'max') {
+    @include rowMachine($cols-8);
+  }
+
+  @include respond-to(900, 'max') {
+    @include rowMachine($cols-4);
+  }
+
+  @include respond-to(700, 'max') {
+    @include rowMachine($cols-3);
+  }
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-11 {
+  @include rowMachine($cols-11);
+
+  @include respond-to(1100, 'max') {
+    @include rowMachine($cols-9);
+  }
+
+  @include respond-to(900, 'max') {
+    @include rowMachine($cols-7);
+  }
+
+  @include respond-to(700, 'max') {
+    @include rowMachine($cols-5);
+  }
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+.l-box-12 {
+  @include rowMachine($cols-12);
+
+  @include respond-to(1300, 'max') {
+    @include rowMachine($cols-10);
+  }
+
+  @include respond-to(900, 'max') {
+    @include rowMachine($cols-8);
+  }
+
+  @include respond-to(700, 'max') {
+    @include rowMachine($cols-4);
+  }
+
+  @include respond-to(600, 'max') {
+    @include rowMachine($cols-2);
+  }
+
+  @include respond-to(500, 'max') {
+    @include rowMachine($cols-1);
+  }
+}
+
+
+
+
+
+
+
+
+.l-col-reverse {
+  flex-direction: column-reverse;
+}
+
+.l-col-center {
+  align-items: center;
+}
+
+.l-col-left {
+  align-self: flex-start;
+}
+
+//
+// Ordering
+//
+.l-order-1 {
+  order: 1;
+}
+
+.l-order-2 {
+  order: 2;
+}
+
+.l-order-3 {
+  order: 3;
+}
+
+.l-order-4 {
+  order: 4;
+}
+
+.l-order-5 {
+  order: 5;
+}
+
+.l-order-6 {
+  order: 6;
+}
+
+.l-order-7 {
+  order: 7;
+}
+
+//
+// Row aignment
+//
+.l-row-left {
+  justify-content: flex-start;
+}
+
+.l-row-right {
+  justify-content: flex-end;
+}
+
+.l-row-center {
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.l-row-justify {
+  justify-content: space-between;
+}
+
+.l-row-spaced {
+  justify-content: space-around;
+}
+
+.l-row-reverse {
+  flex-direction: row-reverse;
+}
+
+//
+// Spacing
+//
+.l-fit {
+  flex-grow: 1;
+}
+
+.l-fill {
+  flex: 1;
+  min-width: 0;
+}
+
+.l-contained {
+  flex: none;
+}
+
+.l-narrow {
+  max-width: 650px;
+}

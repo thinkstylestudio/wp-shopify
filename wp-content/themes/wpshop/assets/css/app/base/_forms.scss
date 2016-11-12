@@ -1,0 +1,137 @@
+.form,
+.search-form {
+  width: 100%;
+  max-width: 900px;
+}
+
+.form-lg {
+  .form-input,
+  .btn {
+
+  }
+}
+
+.form-control {
+  position: relative;
+  margin-right: 10px;
+  margin-top: 0;
+
+  p {
+    margin: 0;
+  }
+
+  input {
+    margin: 0;
+  }
+}
+
+.form-label {
+  position: absolute;
+  left: 1em;
+  top: 0.7em;
+  font-size: 22px;
+  opacity: 0.3;
+  transition: all 0.2s ease;
+
+  &:hover {
+    cursor: text;
+  }
+}
+
+.is-focused {
+
+  .form-label {
+    font-size: 14px;
+    opacity: 1;
+    left: -20px;
+    top: -16px;
+    background: white;
+    padding: 5px 10px;
+
+    &:hover {
+      cursor: text;
+    }
+  }
+
+  .form-input {
+    border-color: black;
+  }
+
+}
+
+.form-input {}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 1em;
+  border-radius: 5px;
+  border: 1px solid rgba(221,221,221,.82);
+  background: white;
+
+  &:focus {
+    border: 1px solid rgba(221,221,221, 1);
+  }
+}
+
+input,
+textarea,
+.btn {
+  padding: 1em;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+input[type="number"] {
+  max-width: 50px;
+  text-align: center;
+}
+
+#mailinglist-email {
+  width: 100%;
+  outline: none;
+  margin-bottom: 1em;
+}
+
+#mailinglist-form {
+  margin-top: 1em;
+
+  .form-control {
+    margin-right: 0;
+  }
+
+  .btn {
+    margin: 0 auto;
+    flex: 0 0 calc((100%/4));
+  }
+}
+
+.form-message {
+  text-align: center;
+
+  &.is-visible {
+    padding: 0.5em;
+  }
+}
+
+.form-error {
+  background-color: color(error);
+}
+
+.form-success {
+  background-color: color(success);
+}
+
+
+.is-submitted {
+  .form-messages,
+  .form-message {
+    margin-top: 0;
+  }
+
+  .form-control {
+    display: none;
+  }
+  
+}
