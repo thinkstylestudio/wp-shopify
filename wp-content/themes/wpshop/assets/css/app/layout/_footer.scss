@@ -1,10 +1,7 @@
 .footer {
-  background: grey;
-  @include respond-to(800, 'max') {}
-}
+  text-align: center;
+  // font-size: $font-m;
+  margin: $space-l 0;
 
-#menu-footer {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
+  @include device(800, 'max') {}
 }

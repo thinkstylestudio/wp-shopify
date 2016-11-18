@@ -5,20 +5,19 @@ Author URI:     https://simpleblend.net
 
 */
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic|Montserrat:400,700);
-
 // Vendor
-//@import "../vendor/animate.min.css";
+@import '../vendor/modular-scale';
 
 // Utilities
-@import "utilities/variables/fonts";
-@import "utilities/variables/colors";
-@import "utilities/variables/misc";
-@import "utilities/variables/spacing";
-@import "utilities/functions";
-@import "utilities/mixins";
-@import "utilities/misc";
+@import "utils/variables/fonts";
+@import "utils/variables/animations";
+@import "utils/variables/opacities";
+@import "utils/variables/breakpoints";
+@import "utils/variables/grid";
+@import "utils/variables/colors";
+@import "utils/variables/spacing";
+@import "utils/functions";
+@import "utils/mixins";
 
 // Base
 @import "base/resets";
@@ -39,6 +38,7 @@ Author URI:     https://simpleblend.net
 @import "modules/mailinglist";
 @import "modules/buttons";
 @import "modules/spinner";
+@import "modules/seperator";
 
 // State
 @import "state/state";

@@ -1,0 +1,18 @@
+.seperator {
+  width: 200px;
+  transform: rotate(180deg);
+  margin-bottom: $space-xxl;
+}
+
+.diamonds {
+  border: none;
+  height: 40px;
+  margin: 0 50px;
+  background: linear-gradient(-135deg, rgba(255, 255, 255, 1) 20px, rgba(0, 0, 0, 0) 0) 0 5px, linear-gradient(135deg, rgba(0, 0, 0, 0.17) 20px, transparent 0) 0 5px;
+  background-color: rgba(0, 0, 0, 0);
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: 26px 57px;
+  z-index: 50;
+  margin-top: -28px;
+}

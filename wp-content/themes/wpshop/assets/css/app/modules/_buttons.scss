@@ -1,7 +1,11 @@
 .btn {
   padding: 1em 2em;
   color: color(white);
-  background-color: color(lightgreen);
+  // background-color: color(primary);
+  background: linear-gradient(-47deg, #6bee56, #44dde6, #a1bbf3);
+  background-size: 700% 700%;
+  background-position: 50% 100%;
+  animation: AnimationName 25s ease infinite;
   text-decoration: none;
   text-transform: uppercase;
   font-size: $font-m;
@@ -13,24 +17,24 @@
   font-weight: bold;
   border: none;
   outline: none;
-  text-shadow: 0 3px 0 rgba(52,79,73,.20);
+  // text-shadow: 0 3px 0 rgba(52,79,73,.20);
 
   // @include grow();
-  @include dropShadow();
+  @include drop-shadow();
   @include shrink();
+  @include grow();
 
   &:hover {
-    background-color: #47a67e;
+    // background-color: darken(color(primary), 8);
 
     &.is-disabled {
-      background-color: color(lightgreen);
+      background-color: color(primary);
     }
   }
 
   &:focus {
     border: none;
     outline: none;
-    background-color: #47a67e;
   }
 
 }

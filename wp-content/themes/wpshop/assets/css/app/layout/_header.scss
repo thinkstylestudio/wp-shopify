@@ -1,314 +1,191 @@
-@keyframes backgroundfadeIn {
-  0%   { background-color: transparent; }
-  100% { background-color: rgba(20, 39, 59, .94); }
-}
-
-.page-header {
-  margin-top: 1em;
-  text-align: center;
-
-  @include respond-to(600, 'max') {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-
-  & + p {
-    margin-top: 0;
-  }
-}
-
-.page-title {
-  display: inline-block;
-}
-
-.page-short-description {
-  font-size: $font-s;
-  margin-top: 1em;
-  margin-bottom: 0;
-
-  &:after {
-    content: '';
-    width: 200px;
-    height: 1px;
-    border-bottom: 1px solid color(grey);
-    display: block;
-    margin: 2em auto;
-  }
-}
-
 .header {
-  z-index: 1;
-  width: 100%;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-
-.header-mobile {
-  display: none;
-  position: relative;
   margin-top: 0;
-  margin-bottom: 1em;
-  padding-bottom: 0;
-  margin: 0;
-  width: 100%;
-  max-width: 100%;
-
-  @include respond-to(1200, 'max') {
-    padding-top: 1em;
-    margin: 0 0 1em;
-    display: flex;
-  }
-
-  .menu-item {
-    float: none;
-    margin: 0;
-
-    a {
-      color: white;
-      font-size: $font-xl;
-      text-align: center;
-      padding: 0.3em 0;
-
-      @include respond-to(600, 'max') {
-        font-size: $font-l;
-      }
-
-    }
-  }
-
-  .nav {
-    display: none;
-    // position: absolute;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 100vh;
-    min-width: 100vw;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    z-index: 9999999;
-
-    &.is-active {
-      display: block;
-      background-color: rgba(20, 39, 59, .97);
-      animation: backgroundfadeIn 0.1s linear;
-
-      .wps-btn-cart {
-        top: 39px;
-
-        @include respond-to(600, 'max') {
-          top: 31px;
-        }
-      }
-    }
-
-    .wps-icon-cart {
-      g {
-        fill: white;
-      }
-    }
-
-  }
-
-  .nav-menu {
-    margin: 0;
-    list-style: none;
-    z-index: 9999999999;
-    position: relative;
-    top: -30px;
-  }
-
-  .wps-icon-cart {
-    height: 40px;
-    width: 40px;
-
-    @include respond-to(600, 'max') {
-      height: 35px;
-      width: 35px;
-    }
-
-    g {
-      fill: color(darkblue);
-    }
-  }
-
-  .wps-cart {
-    z-index: 999999999999999;
-  }
-
 }
 
-.home .header-mobile {
-  @include respond-to(1200, 'max') {
-    margin-bottom: 1em;
-  }
+.logos {
+  margin-top: $space-m;
 }
 
-
-.wps-icon-cart {
-  height: 30px;
-  width: 30px;
-
-  g {
-    fill: color(darkblue);
-  }
+.logo-shopify {
+  max-width: 110px;
+  margin: 0 auto;
+  display: block;
+  margin-right: auto;
+  margin-left: 1em;
+  opacity: $opacity-hard;
 }
 
-
-.wps-btn-cart {
-  z-index: 9999999;
-  left: 5%;
-  top: calc(50% - 10px);
-  padding-left: 0;
-  position: absolute;
-
-  @include respond-to(1200, 'max') {}
-
-  @include respond-to(600, 'max') {
-    left: 5%;
-  }
-
-  @include respond-to(320, 'max') {}
-
-}
-
-
-.header-desktop {
+.logo-wordpress {
+  max-width: 155px;
+  margin-left: auto;
+  margin-right: 1em;
+  display: block;
+  opacity: $opacity-hard;
   position: relative;
-  left: -20px;
-
-  .wps-btn-cart {
-    right: 3%;
-    left: auto;
-    top: 33px;
-
-    .wps-cart-counter {
-      top: -12px;
-    }
-  }
-
-  @include respond-to(1200, 'max') {
-    display: none;
-  }
+  top: 3px;
 }
 
-.is-modal .header {
-  z-index: -1;
-}
 
-.header-wrapper {
-  padding: 0;
-  flex-direction: row;
-  width: 100%;
+.marquee {
   position: relative;
-  margin-left: -1.1em;
-  -webkit-tap-highlight-color: transparent;
+  top: -100px;
 
-  @include respond-to(800, 'max') {
-    justify-content: flex-start;
-  }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-Mobile Menu
-
-*/
-.mobile-menu {
-  display: none;
-  width: 45px;
-  max-width: 45px;
-  height: 45px;
-  top: calc(50% - 22px);
-  position: absolute;
-  right: 7%;
-  margin-top: 14px;
-  background: transparent;
-  border: none;
-  outline:none;
-  z-index: 99999999999999;
-
-  @include respond-to(1200, 'max') {
+  .fa {
+    color: color(white);
+    font-size: $font-xxl;
     display: block;
-    margin-top: 0;
+    text-align: center;
+    position: relative;
+    bottom: -200px;
   }
+}
 
-  @include respond-to(900, 'max') {
-    // right: 30px;
-  }
+.marquee-heading {
+  font-size: $font-xl*5;
+  text-transform: uppercase;
+  font-family: $font-secondary;
+  letter-spacing: -3px;
+  text-align: center;
+  color: color(white);
+  position: relative;
 
-  @include respond-to(600, 'max') {
-    width: 30px;
-    max-width: 30px;
-    height: 30px;
-    right: 8%;
-    top: calc(50% - 15px);
-  }
-
-  @include respond-to(320, 'max') {
-    right: 10%;
-  }
-
-  span:after,
-  span:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 11px;
-  }
-
-  span:after {
-    top: 22px;
+  span, span:after {
+      font-weight: 900;
+      color: white;
+      white-space: nowrap;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-align: center;
+      width: 100%;
+      padding: 0;
   }
 
   span {
-    position: relative;
-    display: block;
+    font-size: 1em;
+    z-index: 100;
+    text-shadow: 0.04em 0.04em 0 rgba(135, 135, 135, 0);
   }
 
-  span,
-  span:after,
-  span:before {
-    width: 45px;
-    height: 2px;
-    background-color: color(darkblue);
-    transition: all 0.3s;
-    backface-visibility: hidden;
-    border-radius: 2px;
-    display: block;
-    content: '';
-
-    @include respond-to(600, 'max') {
-      width: 30px;
-    }
+  span:after {
+      content: attr(data-shadow-text);
+      color: rgba(0,0,0,.20);
+      text-shadow: none;
+      position: absolute;
+      left: .0575em;
+      top: .0575em;
+      z-index: -1;
+      -webkit-mask-image: url('../imgs/mask.png');
   }
 
-  &.is-active span {
-    background-color: transparent;
-  }
 
-  &.is-active span:before {
-    background-color: white;
-    transform: rotate(45deg) translate(0px, 0px);
-  }
 
-  &.is-active span:after {
-    background-color: white;
-    transform: rotate(-45deg) translate(8px, -7px);
-  }
+
+
+
+}
+
+.marquee-copy {
+  font-size: $font-l;
+  color: color(white);
+  text-align: center;
+}
+
+
+
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:93% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:93% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:93% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:93% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:93% 0%}
+    50%{background-position:0% 100%}
+    100%{background-position:93% 0%}
+}
+
+.landing .header {
+  background: linear-gradient(-47deg, #6bee56, #44dde6, #a1bbf3);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 25s ease infinite;
+  -moz-animation: AnimationName 25s ease infinite;
+  animation: AnimationName 25s ease infinite;
+
+
+
+  min-height: 100vh;
+  height: 100vh;
+
+  // &:after {
+  //   position: absolute;
+  //   width: 100%;
+  //   bottom: 0;
+  //   height: 150px;
+  //   content: '';
+  //   display: block;
+  //   /*W3C Syntax (Chrome 26 and above)*/
+  //   background-image:radial-gradient(circle at center -10px, rgba(79,141,198,0), rgba(79,141,198,0) 80px,  rgba(255,255,255,1) 0, rgba(255,255,255,1) 80px, rgba(92,163,224,1) 0),
+  //                    radial-gradient(circle at left -10px, white, white 80px, transparent 0),
+  //                    radial-gradient(circle at right -10px, white, white 80px, rgba(161,216,247,1) 0);
+  //
+  //   background-repeat:repeat-x;
+  //   background-size: 100px 80px;
+  //   background-color:rgba(92,163,224,1);
+  //   animation:.8s wave linear infinite alternate;
+  // }
+
+}
+
+
+.cloud1 {
+  animation: cloud1 98s linear;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: 25px;
+}
+
+.cloud2 {
+  animation: cloud2 88s linear;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: 55px;
+}
+
+.cloud3 {
+  animation: cloud3 168s linear;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: 475px;
+}
+
+.cloud4 {
+  animation: cloud4 88s linear;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: 700px;
+}
+
+.cloud5 {
+  animation: cloud5 168s linear;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: 425px;
+}
+
+.cloud {
+  opacity: 0.1;
+}
+
+.bridge {
+  position: absolute;
+  top: 13%;
+  display: none;
 }

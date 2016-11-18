@@ -42,9 +42,7 @@ use Roots\Sage\Wrapper;
     <?php
       do_action('get_footer');
 
-      if(!is_page_template('template-landing.php')) {
-        get_template_part('templates/footer');
-      }
+      get_template_part('templates/footer');
 
       wp_footer();
     ?>

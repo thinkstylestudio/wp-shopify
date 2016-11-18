@@ -1,5 +1,3 @@
 <footer class="footer">
-  <div class="container">
-    <?php dynamic_sidebar('sidebar-footer'); ?>
-  </div>
+  <section>&copy; <?php echo date("Y") ?> Simpleblend </section>
 </footer>

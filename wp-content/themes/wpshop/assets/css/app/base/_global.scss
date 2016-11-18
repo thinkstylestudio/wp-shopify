@@ -5,40 +5,34 @@ body {
   letter-spacing: 0.01em;
   line-height: 1.6;
   position: relative;
-  font-size: $base;
-  font-family: $font-secondary;
-  color: color(base);
+  font-size: 16px;
+  font-family: $font-primary;
+  color: color(secondary);
   -webkit-backface-visibility: hidden;
+  background: color(white);
 
-  &.wps-animated {
-    animation-duration: 0.2s;
-  }
 
   * + * {
     margin-top: 1.5rem;
   }
 
-  @include respond-to(1600, 'min') {
+  @include device(1600, 'min') {
     line-height: 1.5;
   }
 
 }
 
-html {
-  font-family: $font-secondary;
-}
-
 ::selection {
-  background-color: #eafffd;
+  background-color: color(white);
 }
 
 code, kbd, pre, samp {
-  border-radius: rem($space-s / 2);
+  border-radius: $space-s / 2;
 }
 
 ul, ol, dl {
   padding: 0;
-  margin: rem($space-s) 0 rem($space-s) rem($space-s);
+  margin: $space-s 0 $space-s $space-s;
 }
 
 .logo,
@@ -51,7 +45,7 @@ ul, ol, dl {
   width: 280px;
   display: block;
 
-  @include respond-to(1200, 'max') {
+  @include device(1200, 'max') {
     align-self: flex-start;
     min-width: 250px;
     width: 250px;
@@ -60,13 +54,13 @@ ul, ol, dl {
     margin: 0 auto;
   }
 
-  @include respond-to(600, 'max') {
+  @include device(600, 'max') {
     min-width: 200px;
     max-width: 200px;
     width: 200px;
   }
 
-  @include respond-to(320, 'max') {
+  @include device(320, 'max') {
     min-width: 180px;
     max-width: 180px;
     width: 180px;
@@ -76,7 +70,7 @@ ul, ol, dl {
     width: 100%;
     margin: 0.5em 0 0;
 
-    @include respond-to(1200, 'max') {
+    @include device(1200, 'max') {
       display: block;
       margin: 0;
     }
@@ -85,28 +79,4 @@ ul, ol, dl {
 
 img[data-unveil="true"] {
   opacity: 1;
-}
-
-.logo-shopify {
-  max-width: 125px;
-  margin: 0 auto;
-  display: block;
-  margin-right: auto;
-  margin-left: 1em;
-  opacity: 0.3;
-}
-
-.logo-wordpress {
-  max-width: 170px;
-  margin-left: auto;
-  margin-right: 1em;
-  display: block;
-  opacity: 0.3;
-}
-
-.marquee-heading {
-  font-size: $font-xxxl*2;
-  text-transform: uppercase;
-  font-family: $font-marquee;
-  letter-spacing: -2px;
 }

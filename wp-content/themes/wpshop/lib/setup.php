@@ -99,7 +99,8 @@ function display_sidebar() {
 function assets() {
 
   wp_enqueue_style('Animate CSS', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css', false, null);
-  wp_enqueue_style('WP Shopify Fonts', 'https://fonts.googleapis.com/css?family=Open+Sans|PT+Sans:700', false, null);
+  wp_enqueue_style('Font Awesome CSS', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', false, null);
+  wp_enqueue_style('WP Shopify Fonts', 'https://fonts.googleapis.com/css?family=Open+Sans|Rajdhani:400,700', false, null);
   wp_enqueue_style('WP Shopify CSS', Assets\asset_path('css/app.min.css'), false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {

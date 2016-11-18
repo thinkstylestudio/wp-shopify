@@ -1,0 +1,135 @@
+/*
+
+Animation speeds
+
+*/
+$speed-fast: 0.2s;
+$speed-slow: 0.6s;
+
+
+/*
+
+Spin
+
+*/
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*
+
+Wave
+
+*/
+@keyframes wave {
+  100%{
+    background-position:0px 7px, 0 -4px, 0 -4px;
+  }
+}
+
+
+
+
+
+
+/*
+
+Cloud 1
+
+*/
+@keyframes cloud1 {
+  0% {
+    transform: translateX(-10vw);
+  }
+
+  50% {
+    transform: translateX(110vw);
+  }
+
+  100% {
+    transform: translateX(-10vw);
+  }
+}
+
+
+/*
+
+Cloud 1
+
+*/
+@keyframes cloud2 {
+  0% {
+    transform: translateX(70vw);
+  }
+
+  50% {
+    transform: translateX(-10vw);
+  }
+
+  100% {
+    transform: translateX(70vw);
+  }
+}
+
+
+/*
+
+Cloud 1
+
+*/
+@keyframes cloud3 {
+  0% {
+    transform: translateX(20vw);
+  }
+
+  50% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(20vw);
+  }
+}
+
+
+/*
+
+Cloud 1
+
+*/
+@keyframes cloud4 {
+  0% {
+    transform: translateX(80vw);
+  }
+
+  50% {
+    transform: translateX(0vw);
+  }
+
+  100% {
+    transform: translateX(80vw);
+  }
+}
+
+
+/*
+
+Cloud 1
+
+*/
+@keyframes cloud5 {
+  0% {
+    transform: translateX(50vw);
+  }
+
+  50% {
+    transform: translateX(120vw);
+  }
+
+  100% {
+    transform: translateX(50vw);
+  }
+}

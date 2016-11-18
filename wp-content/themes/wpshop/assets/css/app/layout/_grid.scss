@@ -1,21 +1,3 @@
-$margin: 1.5em;
-$gutterWidth: 1em;
-$containerWidth: 94vw;
-$maxWidth: 1800px;
-$contentWidthNarrow: 800px;
-$cols-1: 1;
-$cols-2: 2;
-$cols-3: 3;
-$cols-4: 4;
-$cols-5: 5;
-$cols-6: 6;
-$cols-7: 7;
-$cols-8: 8;
-$cols-9: 9;
-$cols-10: 10;
-$cols-11: 11;
-$cols-12: 12;
-
 //
 // Grid, nice n simple
 //
@@ -24,7 +6,6 @@ $cols-12: 12;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 0;
-  max-width: $maxWidth;
 }
 
 .l-col {
@@ -36,49 +17,46 @@ $cols-12: 12;
   max-width: 100%;
 }
 
-[class*="wps-l-box"] {
+[class*="l-box"] {
   margin: 0;
   max-width: 100%;
   min-width: 0;
   min-height: 1px;
-  padding: $gutterWidth;
+  padding: $gutter;
   flex: 1 1 0;
 
-  @include respond-to(320, 'max') {
+  @include device(320, 'max') {
     // padding: 2em;
   }
 }
 
-
-
-
-
-
 .l-contain {
-  max-width: $containerWidth;
+  max-width: $container-width;
   margin: 0 auto;
 
-  @include respond-to(1200, 'max') {
-    max-width: 94vw;
+  @include device(1200, 'max') {
+    max-width: $container-width;
   }
-
-  @include siteMaxWidth();
 
 }
 
 .l-contain-narrow {
-  max-width: $contentWidthNarrow;
+  max-width: $content-width-narrow;
   margin: 0 auto;
 
-  @include respond-to(1000, 'max') {
+  @include device(1000, 'max') {
     max-width: 700px;
   }
 
-  @include respond-to(600, 'max') {
+  @include device(600, 'max') {
     max-width: 100%;
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.l-gutter {
+  padding: 0 $space-m;
 }
 
 
@@ -89,220 +67,217 @@ E.g., 2 === one half, 3 === one third, 4 === one fourth, etc
 
 */
 .l-box-2 {
-  @include rowMachine($cols-2);
+  @include row($cols-2);
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-1);
+  @include device(600, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-3 {
-  @include rowMachine($cols-3);
+  @include row($cols-3);
 
-  @include respond-to(900, 'max') {
-    @include rowMachine($cols-2);
+  @include device(900, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-1);
+  @include device(600, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-4 {
-  @include rowMachine($cols-4);
+  @include row($cols-4);
 
-  @include respond-to(800, 'max') {
-    @include rowMachine($cols-2);
+  @include device(800, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-5 {
-  @include rowMachine($cols-5);
+  @include row($cols-5);
 
-  @include respond-to(800, 'max') {
-    @include rowMachine($cols-2);
+  @include device(800, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-6 {
-  @include rowMachine($cols-6);
+  @include row($cols-6);
 
-  @include respond-to(1000, 'max') {
-    @include rowMachine($cols-4);
+  @include device(1000, 'max') {
+    @include row($cols-4);
   }
 
-  @include respond-to(800, 'max') {
-    @include rowMachine($cols-3);
+  @include device(800, 'max') {
+    @include row($cols-3);
   }
 
-  @include respond-to(700, 'max') {
-    @include rowMachine($cols-2);
+  @include device(700, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-7 {
-  @include rowMachine($cols-7);
+  @include row($cols-7);
 
-  @include respond-to(1100, 'max') {
-    @include rowMachine($cols-5);
+  @include device(1100, 'max') {
+    @include row($cols-5);
   }
 
-  @include respond-to(900, 'max') {
-    @include rowMachine($cols-4);
+  @include device(900, 'max') {
+    @include row($cols-4);
   }
 
-  @include respond-to(700, 'max') {
-    @include rowMachine($cols-3);
+  @include device(700, 'max') {
+    @include row($cols-3);
   }
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-2);
+  @include device(600, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-8 {
-  @include rowMachine($cols-8);
+  @include row($cols-8);
 
-  @include respond-to(1100, 'max') {
-    @include rowMachine($cols-5);
+  @include device(1100, 'max') {
+    @include row($cols-5);
   }
 
-  @include respond-to(900, 'max') {
-    @include rowMachine($cols-4);
+  @include device(900, 'max') {
+    @include row($cols-4);
   }
 
-  @include respond-to(700, 'max') {
-    @include rowMachine($cols-3);
+  @include device(700, 'max') {
+    @include row($cols-3);
   }
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-2);
+  @include device(600, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-9 {
-  @include rowMachine($cols-9);
+  @include row($cols-9);
 
-  @include respond-to(1100, 'max') {
-    @include rowMachine($cols-8);
+  @include device(1100, 'max') {
+    @include row($cols-8);
   }
 
-  @include respond-to(900, 'max') {
-    @include rowMachine($cols-4);
+  @include device(900, 'max') {
+    @include row($cols-4);
   }
 
-  @include respond-to(700, 'max') {
-    @include rowMachine($cols-3);
+  @include device(700, 'max') {
+    @include row($cols-3);
   }
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-2);
+  @include device(600, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-10 {
-  @include rowMachine($cols-10);
+  @include row($cols-10);
 
-  @include respond-to(1100, 'max') {
-    @include rowMachine($cols-8);
+  @include device(1100, 'max') {
+    @include row($cols-8);
   }
 
-  @include respond-to(900, 'max') {
-    @include rowMachine($cols-4);
+  @include device(900, 'max') {
+    @include row($cols-4);
   }
 
-  @include respond-to(700, 'max') {
-    @include rowMachine($cols-3);
+  @include device(700, 'max') {
+    @include row($cols-3);
   }
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-2);
+  @include device(600, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-11 {
-  @include rowMachine($cols-11);
+  @include row($cols-11);
 
-  @include respond-to(1100, 'max') {
-    @include rowMachine($cols-9);
+  @include device(1100, 'max') {
+    @include row($cols-9);
   }
 
-  @include respond-to(900, 'max') {
-    @include rowMachine($cols-7);
+  @include device(900, 'max') {
+    @include row($cols-7);
   }
 
-  @include respond-to(700, 'max') {
-    @include rowMachine($cols-5);
+  @include device(700, 'max') {
+    @include row($cols-5);
   }
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-2);
+  @include device(600, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 .l-box-12 {
-  @include rowMachine($cols-12);
+  @include row($cols-12);
 
-  @include respond-to(1300, 'max') {
-    @include rowMachine($cols-10);
+  @include device(1300, 'max') {
+    @include row($cols-10);
   }
 
-  @include respond-to(900, 'max') {
-    @include rowMachine($cols-8);
+  @include device(900, 'max') {
+    @include row($cols-8);
   }
 
-  @include respond-to(700, 'max') {
-    @include rowMachine($cols-4);
+  @include device(700, 'max') {
+    @include row($cols-4);
   }
 
-  @include respond-to(600, 'max') {
-    @include rowMachine($cols-2);
+  @include device(600, 'max') {
+    @include row($cols-2);
   }
 
-  @include respond-to(500, 'max') {
-    @include rowMachine($cols-1);
+  @include device(500, 'max') {
+    @include row($cols-1);
   }
 }
 
 
-
-
-
-
-
-
+//
+// Col alignment
+//
 .l-col-reverse {
   flex-direction: column-reverse;
 }
@@ -311,9 +286,14 @@ E.g., 2 === one half, 3 === one third, 4 === one fourth, etc
   align-items: center;
 }
 
-.l-col-left {
-  align-self: flex-start;
+.l-col-right {
+  align-items: flex-end;
 }
+
+.l-col-left {
+  align-items: flex-start;
+}
+
 
 //
 // Ordering
@@ -346,6 +326,7 @@ E.g., 2 === one half, 3 === one third, 4 === one fourth, etc
   order: 7;
 }
 
+
 //
 // Row aignment
 //
@@ -373,6 +354,7 @@ E.g., 2 === one half, 3 === one third, 4 === one fourth, etc
 .l-row-reverse {
   flex-direction: row-reverse;
 }
+
 
 //
 // Spacing

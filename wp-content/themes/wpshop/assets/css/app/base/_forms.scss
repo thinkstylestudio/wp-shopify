@@ -22,15 +22,16 @@
 
   input {
     margin: 0;
+    border-radius: 10px;
   }
 }
 
 .form-label {
   position: absolute;
-  left: 1em;
-  top: 0.7em;
-  font-size: 22px;
-  opacity: 0.3;
+  left: $space-m;
+  top: 0.9em;
+  font-size: 20px;
+  opacity: $opacity-hard;
   transition: all 0.2s ease;
 
   &:hover {
@@ -45,7 +46,7 @@
     opacity: 1;
     left: -20px;
     top: -16px;
-    background: white;
+    background: color(white);
     padding: 5px 10px;
 
     &:hover {
@@ -54,7 +55,7 @@
   }
 
   .form-input {
-    border-color: black;
+    border-color: color(black);
   }
 
 }
@@ -68,7 +69,7 @@ select {
   padding: 1em;
   border-radius: 5px;
   border: 1px solid rgba(221,221,221,.82);
-  background: white;
+  background: color(white);
 
   &:focus {
     border: 1px solid rgba(221,221,221, 1);
@@ -103,7 +104,8 @@ input[type="number"] {
 
   .btn {
     margin: 0 auto;
-    flex: 0 0 calc((100%/4));
+    // flex: 0 0 calc((100%/4));
+    flex: 0 0 0;
   }
 }
 
@@ -111,7 +113,8 @@ input[type="number"] {
   text-align: center;
 
   &.is-visible {
-    padding: 0.5em;
+    padding: 1em .5em;
+    border-radius: 40px;
   }
 }
 
@@ -133,5 +136,5 @@ input[type="number"] {
   .form-control {
     display: none;
   }
-  
+
 }
