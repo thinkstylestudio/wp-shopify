@@ -9,7 +9,7 @@ body {
   font-family: $font-primary;
   color: color(secondary);
   -webkit-backface-visibility: hidden;
-  background: color(white);
+  background-color: #0c2c4d;
 
 
   * + * {
@@ -23,7 +23,7 @@ body {
 }
 
 ::selection {
-  background-color: color(white);
+  background-color: color(notice);
 }
 
 code, kbd, pre, samp {

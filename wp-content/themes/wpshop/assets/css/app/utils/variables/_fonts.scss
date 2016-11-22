@@ -1,19 +1,17 @@
 @font-face {
-    font-family: 'akrobatblack';
-    src: url('../fonts/akrobat-black-webfont.woff2') format('woff2'),
-         url('../fonts/akrobat-black-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'akrobatblack';
+  src: url('../fonts/akrobat-black-webfont.woff2') format('woff2'),
+       url('../fonts/akrobat-black-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: 'akrobatbold';
-    src: url('../fonts/akrobat-bold-webfont.woff2') format('woff2'),
-         url('../fonts/akrobat-bold-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'akrobatbold';
+  src: url('../fonts/akrobat-bold-webfont.woff2') format('woff2'),
+       url('../fonts/akrobat-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 
@@ -23,7 +21,7 @@ Fonts
 
 */
 $ms-base: 1em;
-$ms-ratio: 1.333;
+$ms-ratio: 1.25;
 
 $font-xxxs:   ms(-5);
 $font-xxs:    ms(-4);

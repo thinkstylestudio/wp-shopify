@@ -1,7 +1,25 @@
 .footer {
+  background-color: #061e37;
+  color: color(white);
   text-align: center;
-  // font-size: $font-m;
-  margin: $space-l 0;
+  margin: 0;
+  padding-bottom: 4em;
+  position: relative;
 
   @include device(800, 'max') {}
+}
+
+.footer-social-link {
+  color: color(white);
+  font-size: $font-l;
+  padding: 0 $space-xxxs;
+  text-decoration: none;
+
+  &:hover {
+    @include dim($opacity-soft);
+  }
+}
+
+.footer-attr {
+  margin-top: $space-xxs;
 }

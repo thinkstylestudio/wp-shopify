@@ -1,3 +1,24 @@
 <footer class="footer">
-  <section>&copy; <?php echo date("Y") ?> Simpleblend </section>
+
+  <div class="bubble-s bubble-1"></div>
+  <div class="bubble-l bubble-2"></div>
+
+  <div class="bubble-s bubble-3"></div>
+  <div class="bubble-l bubble-4"></div>
+
+  <div class="bubble-s bubble-5"></div>
+
+  <section class="footer-social-links">
+    <a href="https://twitter.com/andrewmrobbins" class="footer-social-link">
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/simpleblend" class="footer-social-link">
+      <i class="fa fa-instagram"></i>
+    </a>
+    <a href="https://github.com/arobbins" class="footer-social-link">
+      <i class="fa fa-github"></i>
+    </a>
+  </section>
+  <section class="footer-attr">&copy; <?php echo date("Y") ?> Simpleblend </section>
+
 </footer>

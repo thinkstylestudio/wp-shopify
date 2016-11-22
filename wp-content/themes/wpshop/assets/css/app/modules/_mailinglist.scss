@@ -1,6 +1,42 @@
 .component-mailinglist {
-  background: color(white);
-  padding: 5em 2em;
+  // background-color: color(water);
+  background-image: linear-gradient(to bottom, #163f6b 0%, #061e37 100%);
+  padding: 5em 1em 10em;
   border-radius: 5px;
-  margin-bottom: 10em;
+  // margin-bottom: 10em;
+  position: relative;
+  color: color(white);
+}
+
+.mailinglist-group-copy {
+  color: color(white);
+
+  @include device(600, 'max') {
+    z-index: 999;
+  }
+
+}
+
+.mailinglist-heading {
+  color: color(white);
+  text-transform: uppercase;
+  margin-bottom: 0;
+
+  @include device(600, 'max') {
+    font-size: $font-xxxl;
+  }
+
+  @include device(400, 'max') {
+    font-size: $font-xl;
+  }
+
+}
+
+.mailinglist-copy {
+  margin-top: $space-xxxs;
+  text-align: center;
+
+  @include device(400, 'max') {
+    font-size: 1em;
+  }
 }
