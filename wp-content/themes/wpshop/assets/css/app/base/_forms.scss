@@ -53,6 +53,8 @@
 
 }
 
+
+
 .is-focused {
 
   .form-label {
@@ -145,28 +147,43 @@ input[type="number"] {
   text-align: center;
 
   &.is-visible {
-    padding: 1em .5em;
+    padding:  0 0.5em 1em .5em;
     border-radius: 40px;
   }
 }
 
 .form-error {
-  background-color: color(error);
+  color: color(error);
 }
 
 .form-success {
-  background-color: color(success);
+  color: color(success);
 }
 
 
 .is-submitted {
+
   .form-messages,
   .form-message {
     margin-top: 0;
+
+    .fa {
+      margin-top: 0;
+    }
   }
 
   .form-control {
     display: none;
   }
 
+  .form-success.is-visible {
+    min-height: 200px;
+  }
+
+}
+
+.is-submitting {
+  .form-label {
+    display: none !important;
+  }
 }

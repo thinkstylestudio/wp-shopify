@@ -38,6 +38,10 @@
   position: relative;
   top: -100px;
 
+  @include device(600, 'max') {
+    top: -9%;
+  }
+
   .fa {
     color: color(white);
     font-size: $font-xxl;
@@ -69,7 +73,7 @@
   }
 
   @include device(600, 'max') {
-    font-size: 19vw;
+    font-size: 60px;
     letter-spacing: 0px;
   }
 
@@ -89,7 +93,7 @@
   span {
     font-size: 1em;
     z-index: 100;
-    text-shadow: 0.04em 0.04em 0 rgba(32, 79, 125, 0.32);
+    text-shadow: 0.04em 0.04em 0 rgba(135, 135, 135, 0);
   }
 
   span:after {
@@ -137,6 +141,8 @@
   background: linear-gradient(to top, #c2e59c , #64b3f4);
   min-height: 100vh;
   height: 100vh;
+  overflow: hidden;
+  position: relative;
 }
 
 
@@ -383,14 +389,18 @@
 
 .bridge-new-left {
   position: absolute;
-  bottom: 77vh;
+  bottom: -3%;
   width: 20vw;
   left: 0;
   margin-top: 0;
 
 
   @include device(1500, 'max') {
-    bottom: 85vh;
+    bottom: -0%;
+  }
+
+  @include device(1300, 'max') {
+    bottom: 0%;
   }
 
   @include device(1100, 'max') {
@@ -405,17 +415,17 @@
 
 .bridge-new-right {
   position: absolute;
-  bottom: 76vh;
+  bottom: -4%;
   width: 20vw;
   right: 0;
   margin-top: 0;
 
   @include device(1500, 'max') {
-    bottom: 85vh;
+    bottom: -0%;
   }
 
-  @include device(1200, 'max') {
-    bottom: 85vh;
+  @include device(1300, 'max') {
+    bottom: 0%;
     top: auto;
   }
 

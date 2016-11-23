@@ -61,6 +61,7 @@ function onFormSubmission($) {
     submitHandler: function(form, e) {
 
       e.preventDefault();
+      $(form).addClass('is-submitting');
       $(form).find('input').addClass('is-disabled').prop("disabled", true);
       $(form).find('.spinner').addClass('is-visible');
 
@@ -74,21 +75,17 @@ function onFormSubmission($) {
             $(form).find('#mailinglist-email-error').append('<i class="fa fa-times-circle" aria-hidden="true"></i> Uh oh, we have an error! Looks like ' + data.message.title + '. Please try again');
             $(form).find('.spinner').removeClass('is-visible');
             $(form).find('input').removeClass('is-disabled');
+            $(form).removeClass('is-submitting');
 
           } else {
+            console.log('Success, time to hide stuff');
 
+            $(form).removeClass('is-submitting');
             $(form).find('.spinner').removeClass('is-visible');
             $(form).find('input').removeClass('is-disabled');
-
-              $('.form-input, .form-label').css('position', 'absolute');
-              $('.form-input, .form-label, .form-btn').animateCss('bounceOutLeft', function() {
-              console.log('so done');
-              // $('.form-input, .form-label').hide();
-              $(form).find('.form-success').addClass('is-visible');
-              $(form).find('.form-success').append('<i class="fa fa-check-circle" aria-hidden="true"></i> Success! Please check your email to finish signing up.');
-              $(form).addClass('is-submitted');
-
-            });
+            $(form).find('.form-success').addClass('is-visible');
+            $(form).find('.form-success').append('<i class="fa fa-check-circle" aria-hidden="true"></i> Success! Please check your email to finish signing up.');
+            $(form).addClass('is-submitted');
 
           }
 
@@ -98,6 +95,7 @@ function onFormSubmission($) {
           $(form).find('#mailinglist-email-error').append('Error! ' + textStatus);
           $(form).find('.spinner').removeClass('is-visible');
           $(form).find('input').removeClass('is-disabled');
+          $(form).removeClass('is-submitting');
 
         });
 

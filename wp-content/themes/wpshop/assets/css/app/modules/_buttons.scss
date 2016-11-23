@@ -19,6 +19,10 @@
   border: 1px solid color(white);
   // box-shadow: 0.1em 0.1em 0.4em -0.2em rgba(0, 0, 0, 0.6);
 
+  @include device(500, 'max') {
+    font-size: 1em;
+  }
+
   &:hover {
     background: desaturate(darken(#305d8d, 7), 5);
 

@@ -48,6 +48,7 @@ Disable Form
 function disableForm($form) {
   console.log(1);
   $form.find('input').addClass('is-disabled');
+  $form.addClass('is-submitting');
   console.log(2);
 }
 
@@ -60,6 +61,7 @@ Enable Form
 function enableForm($form) {
   console.log(3);
   $form.find('input').removeClass('is-disabled');
+  $form.removeClass('is-submitting');
   console.log(4);
 }
 
