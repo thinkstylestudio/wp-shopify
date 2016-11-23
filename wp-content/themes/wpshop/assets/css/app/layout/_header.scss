@@ -68,6 +68,10 @@
   text-shadow: 0 0 #fff,0 1px transparent,5px 5px rgba(59, 117, 127, 0.3),5px 5px rgba(255,255,255,0);
   margin: 0;
 
+  @include device(1500, 'max') {
+    font-size: 160px;
+  }
+
   @include device(900, 'max') {
     font-size: 18vw;
   }

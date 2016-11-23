@@ -9,15 +9,15 @@ Author URI:     https://simpleblend.net
 @import '../vendor/modular-scale';
 
 // Utilities
+@import "utils/mixins";
 @import "utils/variables/fonts";
-@import "utils/variables/animations";
 @import "utils/variables/opacities";
 @import "utils/variables/breakpoints";
+@import "utils/variables/animations";
 @import "utils/variables/grid";
 @import "utils/variables/colors";
 @import "utils/variables/spacing";
 @import "utils/functions";
-@import "utils/mixins";
 
 // Base
 @import "base/resets";
