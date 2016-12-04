@@ -2,9 +2,6 @@
   margin-top: 0;
 }
 
-.logos {
-  // margin-top: $space-m;
-}
 
 .logo-shopify {
   max-width: 110px;
@@ -32,7 +29,6 @@
     max-width: 130px;
   }
 }
-
 
 .marquee {
   position: relative;
@@ -65,7 +61,7 @@
   color: color(white);
   position: relative;
   font-size: 180px;
-  text-shadow: 0 0 #fff,0 1px transparent,5px 5px rgba(59, 117, 127, 0.3),5px 5px rgba(255,255,255,0);
+  text-shadow: 0 0 color(white),0 1px transparent,5px 5px rgba(59, 117, 127, 0.3),5px 5px rgba(255,255,255,0);
   margin: 0;
 
   @include device(1500, 'max') {
@@ -77,13 +73,13 @@
   }
 
   @include device(600, 'max') {
-    font-size: 60px;
+    // font-size: 20vw;
     letter-spacing: 0px;
   }
 
   span, span:after {
     font-weight: 900;
-    color: white;
+    color: color(white);
     white-space: nowrap;
     display: inline-block;
     position: absolute;
@@ -97,8 +93,10 @@
   span {
     font-size: 1em;
     z-index: 100;
-    text-shadow: 0.04em 0.04em 0 rgba(135, 135, 135, 0);
+    text-shadow: 0.04em 0.04em 0 rgba(156, 209, 255, 0.31);
   }
+
+
 
   span:after {
     content: attr(data-shadow-text);
@@ -118,7 +116,6 @@
   font-size: $font-l;
   color: color(white);
   text-align: center;
-  // margin-bottom: $space-xxl;
   margin: 0.5em auto 1.5em;
 
   @include device(1100, 'max') {
@@ -136,13 +133,28 @@
 
 }
 
-
-
-
 .home .header {
-  background: #c2e59c;
-  background: -webkit-linear-gradient(to top, #c2e59c , #64b3f4);
-  background: linear-gradient(to top, #c2e59c , #64b3f4);
+  // background: color(skyLight);
+  // background: -webkit-linear-gradient(to top, color(skyLight), color(skyDark));
+  // background: linear-gradient(to top, color(skyLight), color(skyDark));
+
+  background-image: repeating-radial-gradient(ellipse farthest-corner at center bottom,#ffe89a 0, #91dbff 100%);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   min-height: 100vh;
   height: 100vh;
   overflow: hidden;
@@ -153,9 +165,10 @@
 .cloud1 {
   // animation: cloudSway 40s linear;
   animation-iteration-count: infinite;
-  top: 100px;
+  top: 170px;
   right: 60px;
   width: 300px;
+  z-index: 1;
 
   @include device(1200, 'max') {
     top: 50px;
@@ -233,8 +246,6 @@
     right: -10vw;
   }
 
-
-
 }
 
 .cloud5 {
@@ -243,7 +254,6 @@
   top: 10px;
   left: 100px;
   width: 300px;
-  // opacity: 1;
 
   @include device(1000, 'max') {
     top: -2vh;
@@ -252,10 +262,8 @@
 
   @include device(500, 'max') {
     left: -46vw;
+    top: 0;
   }
-
-
-
 }
 
 .cloud {
@@ -266,51 +274,7 @@
 .bridge {
   position: absolute;
   top: 17.6%;
-  // display: none;
 }
-
-
-//
-// .wave {
-//   background: transparent;
-//   height: 40px;
-//   margin-top: 0;
-//   position: absolute;
-//   top: -50px;
-//   width: 100%;
-//   min-width: 100%;
-//   left: 0;
-// }
-//
-// .wave::before {
-//   content: "";
-//   position: absolute;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   background-repeat: repeat-x;
-//   height: 40px;
-//   background-size: 72px 40px;
-//   animation: waveSway 10s linear;
-//   animation-iteration-count: infinite;
-//   background-image:
-//     radial-gradient(circle at 36px -14px,transparent 40px,#c4ecff -15px);
-//
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .bubble-s {
   opacity: 0;
@@ -389,8 +353,6 @@
   height: 10px;
 }
 
-
-
 .bridge-new-left {
   position: absolute;
   bottom: -3%;
@@ -423,6 +385,7 @@
   width: 20vw;
   right: 0;
   margin-top: 0;
+  z-index: 2;
 
   @include device(1500, 'max') {
     bottom: -0%;
@@ -465,8 +428,26 @@
 .sun {
   width: 200px;
   height: 200px;
-  background-color: color(white);
+  background-color: rgba(255, 239, 220, 0.5);
   position: absolute;
-  top: 0;
+  bottom: -70%;
   border-radius: 50%;
+  left: calc(50% - 100px);
+
+  @include device(1100, 'max') {
+    bottom: -60%;
+  }
+
+  @include device(900, 'max') {
+    bottom: -75%;
+  }
+
+  @include device(700, 'max') {
+    bottom: -80%;
+  }
+
+  @include device(600, 'max') {
+    bottom: -100%;
+  }
+
 }

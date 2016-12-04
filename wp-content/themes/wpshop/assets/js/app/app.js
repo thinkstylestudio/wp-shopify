@@ -1,6 +1,8 @@
 import { initPlugins } from "./plugins/plugins";
 import { onShopifyAuth } from "./security/security";
 import { initForms } from "./forms/forms";
+import { initModal } from "./modal/modal";
+import { learnMoreLink } from "./utils";
 
 (function($) {
 
@@ -13,6 +15,9 @@ import { initForms } from "./forms/forms";
 
     initPlugins($);
     initForms($);
+    initModal($);
+
+    learnMoreLink($);
 
   });
 

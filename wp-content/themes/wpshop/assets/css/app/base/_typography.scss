@@ -19,9 +19,13 @@ h1 {
   font-size: $font-xxxl;
   margin: 0 0 0.3em 0;
   font-weight: bold;
+  color: color(white);
+  // text-transform: uppercase;
+  margin-bottom: 0;
+  text-align: center;
 
   @include device(600, 'max') {
-    font-size: $font-l;
+    font-size: $font-xxl;
   }
 }
 
@@ -35,8 +39,16 @@ h3 {
 
 a {
   color: color(primary);
+
+  &:hover {
+    opacity: $opacity-soft;
+  }
 }
 
 p {
   font-size: $font-m;
+
+  @include device(600, 'max') {
+    font-size: 1em;
+  }
 }

@@ -1,7 +1,1 @@
-<?xml version="1.0"?>
-<svg width="300" height="2000" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
- <g>
-  <title>Layer 1</title>
-  <path id="svg_2" d="m0,2000c61.408891,0 88.368892,-49.866 149.777783,-49.866s86.871114,49.866 149.777784,49.866l0,-2000l-299.555567,0l0,2000z" fill="#153C65" clip-rule="evenodd" fill-rule="evenodd"/>
- </g>
-</svg>
+<svg width="300" height="2000" xmlns="http://www.w3.org/2000/svg"><title>Layer 1</title><path d="M0 2000c61.41 0 88.37-49.866 149.778-49.866S236.648 2000 299.556 2000V0H0v2000z" fill="#153C65" clip-rule="evenodd" fill-rule="evenodd"/></svg>

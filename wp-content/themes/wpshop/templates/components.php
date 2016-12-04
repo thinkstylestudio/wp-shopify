@@ -9,6 +9,11 @@
 
         get_template_part('components/mailinglist/mailinglist-controller');
 
+      // Details
+      } else if(get_row_layout() == 'component_details') {
+
+        get_template_part('components/details/details-controller');
+
       // Default
       } else if(get_row_layout() == 'component_default') {
 

@@ -1,15 +1,5 @@
 <section class="component component-mailinglist form-wrapper l-col l-row-center" id="mailinglist">
 
-  <!-- <div class='wave'></div> -->
-
-  <div class="waves">
-  <div class="wave wave_1"></div>
-      <div class="wave wave_2"></div>
-      <div class="wave wave_3"></div>
-      <div class="wave wave_4"></div>
-      <div class="wave wave_5"></div>
-</div>
-
   <div class="mailinglist-group-copy l-col l-col-center">
     <h1 class="mailinglist-heading">Stay in the loop</h1>
     <p class="mailinglist-copy">Sign up below to know when WPS is ready!</p>
@@ -18,8 +8,8 @@
   <form id="mailinglist-form" class="form form-lg l-row-center" action="" method="post" data-nonce="<?php echo wp_create_nonce('mailinglist'); ?>">
 
     <div class="form-control l-row">
-      <label for="email" class="form-label form-label-l">Email Address</label>
-      <input name="email" id="mailinglist-email" type="text" class="form-input form-input-l" />
+      <label for="email" class="form-label">Email Address</label>
+      <input name="email" id="mailinglist-email" type="text" class="form-input" />
       <?php wp_nonce_field('mailinglist_signup'); ?>
 
       <div class="btn-group l-row-center">

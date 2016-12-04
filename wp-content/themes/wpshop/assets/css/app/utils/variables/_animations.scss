@@ -112,14 +112,16 @@ Cloud sway
 
 
 .waves {
-	width:100%;
-	height:25vh;
+	width: 100%;
+	height: 25vh;
   min-height: 14em;
   position: absolute;
   overflow: hidden;
-  top: -20%;
+  top: -7%;
   left: 0px;
   transform: rotate(180deg);
+  margin: 0;
+  z-index: 99;
 }
 
 .wave {
@@ -130,6 +132,7 @@ Cloud sway
 	background:bottom center repeat-x;
 	animation-iteration-count:infinite;
 	animation-timing-function:linear;
+  margin: 0;
 }
 
 /* Individual wave layers */
@@ -142,7 +145,8 @@ Cloud sway
   z-index: 1;
   opacity: 0.10;
   background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22246%22%20height%3D%222000%22%20viewBox%3D%220%200%20246%202000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20fill%3D%22%23153C65%22%20d%3D%22M0%202000c50.43%200%2072.57-20.522%20123-20.522%2050.43%200%2071.34%2020.522%20123%2020.522V0H0v2000z%22/%3E%3C/svg%3E');
-  background-position:bottom left;
+  background-position: bottom left;
+  margin: 0;
 }
 
 .wave_2 {
@@ -153,7 +157,8 @@ Cloud sway
   z-index: 2;
   opacity: 0.25;
   background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22307%22%20height%3D%222000%22%20viewBox%3D%220%200%20307%202000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20fill%3D%22%23153C65%22%20d%3D%22M0%200h307v2000c-64.47%200-90.563-25.623-153.5-25.623C90.565%201974.377%2062.935%202000%200%202000V0z%22/%3E%3C/svg%3E');
-  background-position:bottom right;
+  background-position: bottom right;
+  margin: 0;
 }
 
 .wave_3 {
@@ -164,7 +169,8 @@ Cloud sway
   z-index: 3;
   opacity: 0.50;
   background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22384%22%20height%3D%222000%22%20viewBox%3D%220%200%20384%202000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20fill%3D%22%23153C65%22%20d%3D%22M0%200h384v2000c-80.64%200-113.28-32.047-192-32.047S78.72%202000%200%202000V0z%22/%3E%3C/svg%3E');
-  background-position:bottom center;
+  background-position: bottom center;
+  margin: 0;
 }
 
 .wave_4 {
@@ -175,7 +181,8 @@ Cloud sway
   z-index:4;
   opacity:0.75;
   background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22480%22%20height%3D%222000%22%20viewBox%3D%220%200%20480%202000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20fill%3D%22%23153C65%22%20d%3D%22M480%202000c-100.8%200-141.6-39.892-240-39.892S98.4%202000%200%202000V0h480v2000z%22/%3E%3C/svg%3E');
-  background-position:bottom left;
+  background-position: bottom left;
+  margin: 0;
 }
 
 .wave_5 {
@@ -187,10 +194,7 @@ Cloud sway
   opacity: 1;
   background-image:url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22600%22%20height%3D%222000%22%20viewBox%3D%220%200%20600%202000%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20fill%3D%22%2312375F%22%20d%3D%22M0%202000c123%200%20177-49.866%20300-49.866S474%202000%20600%202000V0H0v2000z%22/%3E%3C/svg%3E');
   background-position: bottom right;
-
-
-
-
+  margin: 0;
 }
 
 /* Wave animations */

@@ -123,9 +123,10 @@ class Jwt_Auth_Public
 
         /** If the authentication fails return a error*/
         if (is_wp_error($user)) {
+            $error_code = $user->get_error_code();
             return new WP_Error(
-                'jwt_auth_failed',
-                __('Invalid Credentials.', 'wp-api-jwt-auth'),
+                '[jwt_auth] '.$error_code,
+                $user->get_error_message($error_code),
                 array(
                     'status' => 403,
                 )
@@ -150,7 +151,7 @@ class Jwt_Auth_Public
         );
 
         /** Let the user modify the token data before the sign. */
-        $token = JWT::encode(apply_filters('jwt_auth_token_before_sign', $token), $secret_key);
+        $token = JWT::encode(apply_filters('jwt_auth_token_before_sign', $token, $user), $secret_key);
 
         /** The token is signed, now create the object with no sensible user data to the client*/
         $data = array(
@@ -213,6 +214,13 @@ class Jwt_Auth_Public
          * return the user.
          */
         $auth = isset($_SERVER['HTTP_AUTHORIZATION']) ?  $_SERVER['HTTP_AUTHORIZATION'] : false;
+
+
+        /* Double check for different auth header string (server dependent) */
+        if (!$auth) {
+            $auth = isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION']) ?  $_SERVER['REDIRECT_HTTP_AUTHORIZATION'] : false;
+        }
+        
         if (!$auth) {
             return new WP_Error(
                 'jwt_auth_no_auth_header',

@@ -29,7 +29,7 @@
 .form-label {
   position: absolute;
   left: $space-m;
-  top: 28px;
+  top: 24px;
   font-size: $font-m;
   color: color(secondary);
   opacity: $opacity-hard;
@@ -58,11 +58,11 @@
 .is-focused {
 
   .form-label {
-    font-size: 14px;
+    font-size: 18px;
     opacity: 1;
-    left: -20px;
-    top: -20px;
-    background: color(white);
+    left: -50px;
+    top: -50px;
+    color: color(white);
     padding: 10px 15px;
     border-radius: 5px;
 
@@ -72,9 +72,7 @@
   }
 
   .form-input {
-    // border-color: color(white);
     border: none;
-    // box-shadow: 5px 5px 10px 10px rgba(221,221,221,.82);
   }
 
 }
@@ -87,7 +85,6 @@ select {
   width: 100%;
   padding: $space-m;
   border-radius: 5px;
-  // border: 1px solid rgba(221,221,221,.82);
   font-size: $font-m;
   border: none;
   background: color(white);
@@ -111,14 +108,6 @@ select {
     font-size: $font-m;
   }
 }
-
-// input,
-// textarea,
-// .btn {
-//   padding: 1em;
-//   font-size: 20px;
-//   border-radius: 5px;
-// }
 
 input[type="number"] {
   max-width: 50px;
