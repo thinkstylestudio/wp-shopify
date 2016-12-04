@@ -12,9 +12,6 @@
     <a href="https://twitter.com/andrewmrobbins" class="footer-social-link">
       <i class="fa fa-twitter"></i>
     </a>
-    <a href="https://www.instagram.com/simpleblend" class="footer-social-link">
-      <i class="fa fa-instagram"></i>
-    </a>
     <a href="https://github.com/arobbins" class="footer-social-link">
       <i class="fa fa-github"></i>
     </a>

@@ -22,7 +22,7 @@
         <div class="line"></div>
       </div>
 
-      <p class="marquee-copy l-contain-narrow">Sync a Shopify store with any WordPress site. A plugin designed to be hackable, lightweight, and harmonious.</p>
+      <p class="marquee-copy l-contain-narrow">Connect and sync your Shopify store with WordPress. A plugin designed to be hackable, seamless, and lightweight.</p>
 
       <div class="l-col l-row-center">
         <div class="btn-group" style="align-self: center;">

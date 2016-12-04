@@ -122,6 +122,11 @@ Cloud sway
   transform: rotate(180deg);
   margin: 0;
   z-index: 99;
+
+  @include device(1000, 'max') {
+    top: -6%;
+  }
+  
 }
 
 .wave {

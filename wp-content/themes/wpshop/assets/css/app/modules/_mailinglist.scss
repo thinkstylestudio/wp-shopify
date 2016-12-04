@@ -4,6 +4,20 @@
   border-radius: 5px;
   position: relative;
   color: color(white);
+
+  &:after {
+    content: '';
+    width: 160px;
+    height: 60px;
+    bottom: 20px;
+    left: calc(50% - 80px);
+    position: absolute;
+    background: url('../imgs/wave-shape.svg');
+    background-size: contain;
+    background-position: 50% 50%;
+    opacity: $opacity-hard;
+  }
+  
 }
 
 .mailinglist-group-copy {

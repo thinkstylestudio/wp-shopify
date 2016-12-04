@@ -69,6 +69,8 @@ function onFormSubmission($) {
         .done(function(data) {
 
           console.log("data: ", data);
+          $(form).find('input').prop("disabled", false);
+          $('#mailinglist-email').focus().select();
 
           if(data.code !== 200) {
             $(form).find('.form-error').addClass('is-visible');
@@ -96,6 +98,9 @@ function onFormSubmission($) {
           $(form).find('.spinner').removeClass('is-visible');
           $(form).find('input').removeClass('is-disabled');
           $(form).removeClass('is-submitting');
+
+          $('#mailinglist-email').prop("disabled", false);
+
 
         });
 

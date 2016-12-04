@@ -2,6 +2,14 @@
 .search-form {
   width: 100%;
   max-width: 900px;
+
+  @include device(1000, 'max') {
+    width: 90%;
+  }
+
+  @include device(600, 'max') {
+    width: 100%;
+  }
 }
 
 .form-lg {
@@ -36,7 +44,7 @@
   transition: all 0.2s ease;
 
   @include device(900, 'max') {
-    top: 17px;
+    top: 15px;
   }
 
   &:hover {
@@ -65,6 +73,12 @@
     color: color(white);
     padding: 10px 15px;
     border-radius: 5px;
+
+    @include device(800, 'max') {
+      left: -10px;
+      top: -40px;
+      font-size: 16px;
+    }
 
     &:hover {
       cursor: text;
@@ -95,7 +109,6 @@ select {
   }
 
   @include device(900, 'max') {
-    padding: 1em;
     font-size: 1em;
   }
 
