@@ -24,6 +24,10 @@
   // width: 100%;
   // background: color(white);
 
+  @include device(500, 'max') {
+    height: 1px;
+  }
+
   &:after {
     content: '';
     width: 160px;

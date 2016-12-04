@@ -126,7 +126,15 @@ Cloud sway
   @include device(1000, 'max') {
     top: -6%;
   }
-  
+
+  @include device(500, 'max') {
+    top: -4%;
+  }
+
+}
+
+.flexboxtweener .waves {
+  // display: none;
 }
 
 .wave {

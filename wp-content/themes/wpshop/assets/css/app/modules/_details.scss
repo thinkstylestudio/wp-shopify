@@ -16,6 +16,11 @@
     background-size: contain;
     background-position: 50% 50%;
     opacity: $opacity-hard;
+
+    @include device(500, 'max') {
+      bottom: 0;
+    }
+    
   }
 
   h1:nth-of-type(2) {

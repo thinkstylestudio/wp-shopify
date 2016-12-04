@@ -2,6 +2,10 @@
   margin-top: 0;
 }
 
+.flexboxtweener .logos {
+  display: none;
+}
+
 
 .logo-shopify {
   max-width: 110px;
@@ -38,6 +42,10 @@
     top: -9%;
   }
 
+  @include device(500, 'max') {
+    top: -15%;
+  }
+
   .fa {
     color: color(white);
     font-size: $font-xxl;
@@ -45,6 +53,12 @@
     text-align: center;
     position: relative;
     bottom: -200px;
+  }
+}
+
+.flexboxtweener {
+  .marquee {
+    left: 50px;
   }
 }
 
@@ -73,7 +87,7 @@
   }
 
   @include device(600, 'max') {
-    // font-size: 20vw;
+    font-size: 15vw;
     letter-spacing: 0px;
   }
 
@@ -96,8 +110,6 @@
     text-shadow: 0.04em 0.04em 0 rgba(0, 0, 0, 0);
   }
 
-
-
   span:after {
     content: attr(data-shadow-text);
     color: rgba(0,0,0,.40);
@@ -111,6 +123,20 @@
   }
 
 }
+
+
+
+
+.no-cssmask {
+  .marquee-heading {
+    span:after {
+      color: rgba(0,0,0,.10);
+    }
+  }
+}
+
+
+
 
 .marquee-copy {
   font-size: $font-l;
@@ -189,6 +215,10 @@
     right: -39vw;
   }
 
+  @include device(400, 'max') {
+    display: none;
+  }
+
 }
 
 .cloud2 {
@@ -264,6 +294,11 @@
     left: -46vw;
     top: 0;
   }
+
+  @include device(400, 'max') {
+    display: none;
+  }
+
 }
 
 .cloud {
