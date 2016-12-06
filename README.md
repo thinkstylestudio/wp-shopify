@@ -11,7 +11,7 @@ Behind the scenes, WPS uses Webhooks allowing you to manage your product details
 
 The main philosophy behind WPS is to give you full control over how you display your products. In this spirit we’ve created many custom hooks as-well as easy to use shortcodes giving you the ability to change anything you want.
 
-Finally, the checkout process is designed to be completely integrated. We’re using the Shopify JavaScript SDK to manage the cart experience so when your user checks out, they’re sent directly to Shopify to finish the process.
+Finally, the checkout process is designed to be completely integrated. We’re using the [Shopify JavaScript Buy SDK](https://shopify.github.io/js-buy-sdk) to manage the cart experience so when your user checks out, they’re sent directly to Shopify to finish the process.
 
 ## Why is this needed?
 We’re of the opinion that WordPress and Shopify should focus on what they’re best at. If you’re using WordPress the options for eCommerce are often slow, cumbersome, and potentially very expensive depending on the features you need. Likewise if you’re using Shopify, your CMS doesn’t come close to the capabilities of WordPress. So why not combine the best of both worlds?
