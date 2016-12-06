@@ -1,8 +1,8 @@
 <section class="component component-mailinglist form-wrapper l-col l-row-center" id="mailinglist">
 
   <div class="mailinglist-group-copy l-col l-col-center">
-    <h1 class="mailinglist-heading">Stay in the loop</h1>
-    <p class="mailinglist-copy">Sign up below to know when WPS is ready!</p>
+    <h1 class="mailinglist-heading">Coming soon</h1>
+    <p class="mailinglist-copy">Enter your email to know when WPS is ready!</p>
   </div>
 
   <form id="mailinglist-form" class="form form-lg l-row-center" action="" method="post" data-nonce="<?php echo wp_create_nonce('mailinglist'); ?>">

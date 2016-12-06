@@ -107,7 +107,7 @@ Learn more
 function learnMoreLink($) {
 
 
-  $('.btn-hero').on('click', function(e) {
+  $('.sroll-link').on('click', function(e) {
 
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);

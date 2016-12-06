@@ -36,14 +36,14 @@
 
 .marquee {
   position: relative;
-  top: -100px;
+  top: -80px;
 
   @include device(600, 'max') {
     top: -9%;
   }
 
   @include device(500, 'max') {
-    top: -15%;
+    top: -8%;
   }
 
   .fa {
@@ -79,17 +79,21 @@
   margin: 0;
 
   @include device(1500, 'max') {
-    font-size: 160px;
+    font-size: 140px;
   }
 
   @include device(900, 'max') {
-    font-size: 18vw;
+    font-size: 14vw;
   }
 
   @include device(600, 'max') {
-    font-size: 15vw;
     letter-spacing: 0px;
   }
+
+  @include device(400, 'max') {
+    font-size: 18vw;
+  }
+
 
   span, span:after {
     font-weight: 900;
@@ -144,6 +148,11 @@
   text-align: center;
   margin: 0.5em auto 1.5em;
 
+  @include device(1500, 'max') {
+    font-size: $font-m;
+    max-width: 42vw;
+  }
+
   @include device(1100, 'max') {
     max-width: 60vw;
   }
@@ -164,18 +173,7 @@
   // background: -webkit-linear-gradient(to top, color(skyLight), color(skyDark));
   // background: linear-gradient(to top, color(skyLight), color(skyDark));
 
-  background-image: repeating-radial-gradient(ellipse farthest-corner at center bottom,#ffe89a 0, #91dbff 100%);
-
-
-
-
-
-
-
-
-
-
-
+  background-image: repeating-radial-gradient(ellipse farthest-corner at center bottom, rgb(253, 210, 146) 0, #91dbff 100%);
 
 
 
@@ -469,6 +467,10 @@
   border-radius: 50%;
   left: calc(50% - 100px);
 
+  @include device(1500, 'min') {
+    bottom: -50%;
+  }
+
   @include device(1100, 'max') {
     bottom: -50%;
   }
@@ -485,4 +487,17 @@
     bottom: -90%;
   }
 
+}
+
+
+.link-signup {
+  text-align: center;
+  margin-top: $space-m;
+  display: inline-block;
+  color: color(water);
+  border-color: color(water);
+  margin-left: auto;
+  margin-right: auto;
+  // border: none;
+  // text-decoration: underline;
 }

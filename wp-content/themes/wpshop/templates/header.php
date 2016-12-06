@@ -22,13 +22,14 @@
         <div class="line"></div>
       </div>
 
-      <p class="marquee-copy l-contain-narrow">Connect and sync your Shopify store with WordPress. A plugin designed to be hackable, seamless, and lightweight.</p>
+      <p class="marquee-copy l-contain-narrow">Sync your Shopify store with WordPress. A plugin designed to be hackable, seamless, and lightweight.</p>
 
       <div class="l-col l-row-center">
         <div class="btn-group" style="align-self: center;">
-          <a href="#details" class="btn btn-dark btn-hero">Learn more</a>
+          <a href="#details" class="btn btn-dark btn-hero sroll-link">Read more</a>
           <div class="btn-bg"></div>
         </div>
+        <a href="#mailinglist" class="link-signup sroll-link">Get notified</a>
       </div>
 
     </div>
