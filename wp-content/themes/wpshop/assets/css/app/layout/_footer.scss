@@ -11,11 +11,11 @@
 
 .footer-social-link {
   color: color(white);
-  font-size: $font-l;
+  font-size: $font-xxl;
   padding: 0 $space-xxxs;
   text-decoration: none;
   border: none;
-  
+
   &:hover {
     @include dim($opacity-soft);
   }
