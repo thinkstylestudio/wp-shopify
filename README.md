@@ -1,7 +1,6 @@
 [![N|Solid](https://simpleblend.net/wpshop-temp-logo.png)](https://wpshop.io)
 
 > Sync your Shopify store with WordPress. A plugin designed to be hackable, seamless, and lightweight.
-___
 
 Website: https://wpshop.io
 
