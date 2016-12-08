@@ -44,6 +44,10 @@
   max-width: $content-width-narrow;
   margin: 0 auto;
 
+  @include device(1500, 'max') {
+    max-width: 680px;
+  }
+
   @include device(1000, 'max') {
     max-width: 700px;
   }

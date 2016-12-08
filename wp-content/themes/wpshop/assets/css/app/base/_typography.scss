@@ -48,6 +48,10 @@ a {
 p {
   font-size: $font-m;
 
+  @include device(1500, 'max') {
+    font-size: 1em;
+  }
+
   @include device(600, 'max') {
     font-size: 1em;
   }
