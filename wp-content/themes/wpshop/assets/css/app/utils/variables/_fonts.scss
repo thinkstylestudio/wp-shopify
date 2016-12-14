@@ -21,17 +21,25 @@ Fonts
 
 */
 $ms-base: 1em;
-$ms-ratio: 1.25;
+$ms-ratio: 1.333;
 
-$font-xxxs:   ms(-5);
-$font-xxs:    ms(-4);
-$font-xs:     ms(-3);
-$font-s:      ms(-2);
-$font-m:      ms(1);
-$font-l:      ms(2);
-$font-xl:     ms(3);
-$font-xxl:    ms(4);
-$font-xxxl:   ms(5);
+$font-xxxs:   ms(-4);
+$font-xxs:    ms(-3);
+$font-xs:     ms(-2);
+$font-s:      ms(-1);
+$font-m:      ms(0);
+$font-l:      ms(1);
+$font-xl:     ms(2);
+$font-xxl:    ms(3);
+$font-xxxl:   ms(4);
+
+
+$heading-1:   ms(5);
+$heading-2:   ms(4);
+$heading-3:   ms(3);
+$heading-4:   ms(2);
+$heading-5:   ms(1);
+$heading-6:   ms(0);
 
 $font-primary: 'Open Sans', sans-serif;
 $font-secondary: 'akrobatblack', serif;

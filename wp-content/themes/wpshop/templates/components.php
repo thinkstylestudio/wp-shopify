@@ -10,19 +10,9 @@
         get_template_part('components/mailinglist/mailinglist-controller');
 
       // Details
-      } else if(get_row_layout() == 'component_details') {
+      } else if(get_row_layout() == 'component_marquee') {
 
-        get_template_part('components/details/details-controller');
-
-      // Showcase
-      } else if(get_row_layout() == 'component_showcase') {
-
-        get_template_part('components/showcase/showcase-controller');
-
-      // Default
-      } else if(get_row_layout() == 'component_default') {
-
-        get_template_part('components/default/default-controller');
+        get_template_part('components/marquee/marquee-controller');
 
       }
 

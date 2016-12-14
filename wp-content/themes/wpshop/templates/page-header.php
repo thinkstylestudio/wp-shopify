@@ -1,6 +1,6 @@
 <?php use Roots\Sage\Titles; ?>
 
-<?php if(!is_page_template('template-landing.php')) { ?>
+<?php if(!get_field('page_settings_hide_title')) { ?>
 
   <div class="page-header">
     <h1><?= Titles\title(); ?></h1>

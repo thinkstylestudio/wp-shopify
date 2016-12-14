@@ -2,37 +2,44 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $font-secondary;
   line-height: 1.1;
   font-weight: bold;
-  color: color(secondary);
+  color: color(base);
+  margin: 0 0 $space-xxs;
 
   a {
     text-decoration: none;
-    color: color(secondary);
+    color: color(base);
   }
-
-  + p {
-    margin-top: 0.5em;
-  }
-
 }
 
 h1 {
-  font-size: $font-xxxl;
-  margin: 0 0 0.3em 0;
+  font-size: $heading-1;
   font-weight: bold;
-  color: color(white);
   text-align: center;
-
+  text-transform: uppercase;
+  
   @include device(600, 'max') {
     font-size: $font-xxl;
   }
 }
 
 h2 {
-  font-size: $font-l;
+  font-size: $heading-2;
 }
 
 h3 {
-  font-size: $font-m;
+  font-size: $heading-3
+}
+
+h4 {
+  font-size: $heading-4;
+}
+
+h5 {
+  font-size: $heading-5;
+}
+
+h6 {
+  font-size: $heading-6;
 }
 
 a {
@@ -40,13 +47,13 @@ a {
   text-decoration: none;
   border-bottom: 1px dashed color(primary);
 
-  &:hover {
-    opacity: $opacity-soft;
-  }
+  // &:hover {
+  //   opacity: $opacity-soft;
+  // }
 }
 
 p {
-  font-size: $font-m;
+  font-size: 1em;
 
   @include device(1500, 'max') {
     font-size: 1em;

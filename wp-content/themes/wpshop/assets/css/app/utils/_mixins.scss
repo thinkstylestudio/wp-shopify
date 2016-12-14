@@ -66,8 +66,8 @@ Shrink
 @mixin shrink() {
   transition: transform $speed-fast ease-in-out;
 
-  &:focus {
-    transform: scale(0.97);
+  &:hover {
+    transform: scale(0.95);
   }
 }
 

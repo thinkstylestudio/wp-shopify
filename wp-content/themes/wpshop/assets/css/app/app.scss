@@ -35,13 +35,15 @@ Author URI:     https://simpleblend.net
 @import "layout/nav";
 
 // Modules
-@import "modules/mailinglist";
-@import "modules/buttons";
-@import "modules/spinner";
-@import "modules/seperator";
-@import "modules/modal";
-@import "modules/details";
-@import "modules/showcase";
+// @import "components/mailinglist";
+@import "components/buttons";
+@import "components/spinner";
+@import "components/seperator";
+@import "components/modal";
+// @import "components/details";
+// @import "components/showcase";
+@import "components/cards";
+@import "components/marquee";
 
 // State
 @import "state/state";

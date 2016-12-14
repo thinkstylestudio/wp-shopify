@@ -1,0 +1,36 @@
+.card {
+  box-shadow: 0 11px 24px -6px rgba(0, 0, 0, 0.25);
+}
+
+.cards {
+
+}
+
+
+.doc-section {
+  margin-bottom: 3em;
+}
+
+
+.color {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 $space-xs;
+}
+
+.color-secondary {
+  background-color: #5adcb2;
+}
+
+.color-primary {
+  background-color: #3bb7cb;
+}
+
+.color-base {
+  background-color: #0c2735;
+}
+
+.color-base-offset {
+  background-color: #f2f2f2;
+}

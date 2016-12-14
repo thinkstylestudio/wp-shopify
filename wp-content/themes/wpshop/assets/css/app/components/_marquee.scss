@@ -1,0 +1,23 @@
+.component-marquee {
+  width: 100%;
+  min-height: 90vh;
+  background-color: color(baseOffset);
+}
+
+.marquee-img {
+  max-width: 60vw;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 15vh;
+}
+
+.marquee-content {
+  position: relative;
+  top: 15vh;
+}
+
+.marquee-heading {
+  max-width: 60vw;
+  font-size: ms(6);
+}

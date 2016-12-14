@@ -24,29 +24,26 @@ use Roots\Sage\Wrapper;
 
     <div class="wrap container l-fill" role="document">
 
-      <div class="content row">
+      <main class="main l-col l-col-center">
+        <?php include Wrapper\template_path(); ?>
 
-        <main class="main l-col l-col-center">
-          <?php include Wrapper\template_path(); ?>
+        <?php
 
-          <div class="waves">
-            <div class="wave wave_1"></div>
-            <div class="wave wave_2"></div>
-            <div class="wave wave_3"></div>
-            <div class="wave wave_4"></div>
-            <div class="wave wave_5"></div>
-          </div>
-          
-          <?php get_template_part('templates/components'); ?>
-        </main>
+        if(is_page('docs')) {
+          get_template_part('templates/docs');
+        }
 
-        <?php if (Setup\display_sidebar()) : ?>
-          <aside class="sidebar">
-            <?php include Wrapper\sidebar_path(); ?>
-          </aside>
-        <?php endif; ?>
+        ?>
 
-      </div>
+        <?php get_template_part('templates/components'); ?>
+      </main>
+
+      <?php if (Setup\display_sidebar()) : ?>
+        <aside class="sidebar">
+          <?php include Wrapper\sidebar_path(); ?>
+        </aside>
+      <?php endif; ?>
+      
     </div>
 
     <?php
